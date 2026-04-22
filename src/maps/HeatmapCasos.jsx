@@ -34,7 +34,7 @@ useEffect(() => {
       },
       geometry: {
         type: 'Point',
-        coordinates: f.properties.ambulancia_actual.origen.coords
+        coordinates: f.geometry.coordinates  
       }
     }))
   }
@@ -97,7 +97,8 @@ useEffect(() => {
             <strong>${NOMCOMAR || 'Comarca'}</strong><br/>
             Població: ${poblacio || 'N/A'}<br/>
             Casos ictus: <span style="color:#D00000; font-weight:bold">${casos_ictus || 0}</span>
-            </div>`)
+            </div>
+            `)
             .addTo(map.current)
         }
       })
