@@ -97,24 +97,20 @@ export default function HeatmapBurbuja({ map, activeView }) {
     }
 
     const handleMouseMove = (e) => {
-      if (e.features.length > 0) {
-        map.current.on('mousemove', 'comarcas-interaction-burbujas', (e) => {
-          if (e.features.length > 0) {
+        if (e.features.length > 0) {
             map.current.getCanvas().style.cursor = 'pointer'
             const { NOMCOMAR, casos_ictus, poblacio } = e.features[0].properties
             tooltip.current
-              .setLngLat(e.lngLat)
-              .setHTML(`
+            .setLngLat(e.lngLat)
+            .setHTML(`
                 <div style="padding:5px">
                 <strong>${NOMCOMAR || 'Comarca'}</strong><br/>
                 Població: ${poblacio || 'N/A'}<br/>
                 Casos ictus: <span style="color:#D00000; font-weight:bold">${casos_ictus || 0}</span>
                 </div>
-              `)
-              .addTo(map.current)
-          }
-        })
-      }
+            `)
+            .addTo(map.current)
+        }
     }
 
     const handleMouseLeave = () => {
@@ -130,6 +126,9 @@ export default function HeatmapBurbuja({ map, activeView }) {
         if (map.current.getLayer('ictus-burbujas')) map.current.removeLayer('ictus-burbujas')
         if (map.current.getLayer('comarcas-interaction-burbujas')) map.current.removeLayer('comarcas-interaction-burbujas')
         if (map.current.getSource('data_ictus')) map.current.removeSource('data_ictus')
+        if (map.current.getSource('comarcas')) map.current.removeSource('comarcas')
+        map.current.off('mousemove', 'comarcas-interaction-burbujas', handleMouseMove)
+        map.current.off('mouseleave', 'comarcas-interaction-burbujas', handleMouseLeave)
       }
     }
   }, [map])
