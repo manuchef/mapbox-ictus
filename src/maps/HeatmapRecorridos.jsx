@@ -30,7 +30,11 @@ export default function HeatmapRecorridos({ map, activeView }) {
               type: 'Feature',
               geometry: {
                 type: 'LineString',
-                coordinates: [amb.origen.coords, amb.desti.coords]
+                coordinates: [
+                  amb.origen.coords, 
+                  ...amb.ruta_coords,
+                  amb.desti.coords
+                ]
               }
             }
           })
@@ -69,7 +73,7 @@ export default function HeatmapRecorridos({ map, activeView }) {
         }
       })
     }
-
+    
     const runSetup = () => {
       if (!map) return
       setupLayers()
