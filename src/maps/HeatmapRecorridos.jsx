@@ -19,9 +19,10 @@ export default function HeatmapRecorridos({ map, activeView }) {
 
       ictusData.features.forEach((feature, index) => {
         const amb = feature.properties.ambulancia_actual
-        if (!amb?.origen?.coords || !amb?.desti?.coords) return
         const sourceId = `ruta-comarca-${index}`
         const layerId = `ruta-line-${index}`
+        const pointsourceId = `puntos-comarca-${index}`
+        const pointLayerId = `puntos-line-${index}`
 
         if (!map.getSource(sourceId)) {
           map.addSource(sourceId, {
@@ -30,7 +31,11 @@ export default function HeatmapRecorridos({ map, activeView }) {
               type: 'Feature',
               geometry: {
                 type: 'LineString',
-                coordinates: [amb.origen.coords, amb.desti.coords]
+                coordinates: [
+                  amb.origen.coords, 
+                  ...amb.ruta_coords,
+                  amb.desti.coords
+                ]
               }
             }
           })
@@ -54,11 +59,35 @@ export default function HeatmapRecorridos({ map, activeView }) {
           return
         }
 
-        const markerOrigen = new mapboxgl.Marker({ color: 'green' })
-          .setLngLat(amb.origen.coords)
-          .addTo(map)
-        markersRef.current.push(markerOrigen)
+        if (!map.getSource(pointsourceId)) {
+          map.addSource(pointsourceId, {
+            type: 'geojson',
+            data: {
+            type: 'Feature',
+              geometry: { 
+                type: 'Point',
+                coordinates: amb.origen.coords
+              }
+            }
+          })
+        }
+    
+        if (!map.getLayer(pointLayerId)) {
+      map.addLayer({
+        id: pointLayerId,
+        type: 'circle',
+        source: pointsourceId,
+        layout: {
+          'visibility': activeView === 'recorridos' ? 'visible' : 'none'
+        },
+        paint: {
+          'circle-radius': 6,
+          'circle-color': '#00ff00'
+        }
+      })
+        }
 
+        // Marcador azul solo si este hospital no se ha pintado ya
         const hospitalKey = amb.desti.nom
         if (!hospitalesVistos.has(hospitalKey)) {
           hospitalesVistos.add(hospitalKey)
@@ -66,10 +95,11 @@ export default function HeatmapRecorridos({ map, activeView }) {
             .setLngLat(amb.desti.coords)
             .addTo(map)
           markersRef.current.push(markerDesti)
+          markerDesti.getElement().style.display = activeView === 'recorridos' ? '' : 'none'
         }
       })
     }
-
+    
     const runSetup = () => {
       if (!map) return
       setupLayers()
@@ -80,6 +110,7 @@ export default function HeatmapRecorridos({ map, activeView }) {
     } else {
       map.once('load', runSetup)
     }
+              
     const t = window.setTimeout(() => {
       if (map?.isStyleLoaded()) {
         runSetup()
@@ -91,8 +122,12 @@ export default function HeatmapRecorridos({ map, activeView }) {
       ictusData.features.forEach((_, index) => {
         const sourceId = `ruta-comarca-${index}`
         const layerId = `ruta-line-${index}`
-        if (map?.getLayer(layerId)) map.removeLayer(layerId)
-        if (map?.getSource(sourceId)) map.removeSource(sourceId)
+        const pointsourceId = `puntos-comarca-${index}`
+        const pointLayerId = `puntos-line-${index}`
+        if (map.getLayer(layerId)) map.removeLayer(layerId)
+        if (map.getSource(sourceId)) map.removeSource(sourceId)
+        if (map.getLayer(pointLayerId)) map.removeLayer(pointLayerId)
+        if (map.getSource(pointsourceId)) map.removeSource(pointsourceId)
       })
       markersRef.current.forEach(m => m.remove())
       markersRef.current = []
@@ -101,18 +136,25 @@ export default function HeatmapRecorridos({ map, activeView }) {
 
   useEffect(() => {
     if (!map) return
-    const vis = activeView === 'recorridos' ? 'visible' : 'none'
+
+    const isVisible = activeView === 'recorridos'
+
     ictusData.features.forEach((_, index) => {
-      const id = `ruta-line-${index}`
-      if (map.getLayer(id)) {
-        map.setLayoutProperty(id, 'visibility', vis)
+      const layerId = `ruta-line-${index}`
+      const pointLayerId = `puntos-line-${index}`
+      if (map.getLayer(layerId)) {
+        map.setLayoutProperty(layerId, 'visibility', isVisible ? 'visible' : 'none')
       }
+      if (map.getLayer(pointLayerId)) {
+        map.setLayoutProperty(pointLayerId, 'visibility', isVisible ? 'visible' : 'none')
+      }
+
+      markersRef.current.forEach(marker => {
+        const el = marker.getElement()
+        el.style.display = isVisible ? '' : 'none'
+      })
     })
-    markersRef.current.forEach(m => {
-      const el = m.getElement()
-      if (el) el.style.display = vis === 'visible' ? '' : 'none'
-    })
-  }, [activeView, map])
+   }, [activeView, map])
 
   return null
 }
