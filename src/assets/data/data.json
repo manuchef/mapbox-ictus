@@ -16,32 +16,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Alt Camp",
-        "provincia": "Tarragona",
-        "poblacio": 34225,
-        "casos_ictus_any": 72,
-        "incidencia_per_100k": 210.4,
-        "casos_tractament_fibrinolisi": 28,
-        "casos_trombectomia": 9,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Alt Camp",
-            "coords": [
+        "region": "Alt Camp",
+        "province": "Tarragona",
+        "population": 34225,
+        "cases_stroke_year": 72,
+        "incidence_of_100k": 210.4,
+        "cases_treatment_fibrinolysis": 28,
+        "cases_thrombectomy": 9,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Alt Camp",
+            "coordinates": [
               1.2978,
               41.3014
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.2978,
               41.3014
@@ -63,38 +63,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 20.8,
-          "isocrona_min": 23,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 20.8,
+         "isochrone_min": 23,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Alt Camp",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Alt Camp",
+            "coordinates": [
               1.2617,
               41.2928
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.2617,
               41.2928
@@ -116,17 +116,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 74.0,
-          "isocrona_min": 67,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 74.0,
+         "isochrone_min": 67,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 53,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 53,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -140,32 +140,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Alt Emporda",
-        "provincia": "Girona",
-        "poblacio": 451143,
-        "casos_ictus_any": 96,
-        "incidencia_per_100k": 21.3,
-        "casos_tractament_fibrinolisi": 21,
-        "casos_trombectomia": 6,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Alt Emporda",
-            "coords": [
+        "region": "Alt Emporda",
+        "province": "Girona",
+        "population": 451143,
+        "cases_stroke_an": 96,
+        "incidence_of_100k": 21.3,
+        "cases_treatment_fibrinolysis": 21,
+        "cases_thrombectomy": 6,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Alt Emporda",
+            "coordinates": [
               3.0737,
               42.296
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               3.0737,
               42.296
@@ -187,38 +187,38 @@
               41.995
             ]
           ],
-          "distancia_km": 39.5,
-          "isocrona_min": 44,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 39.5,
+         "isochrone_min": 44,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Alt Emporda",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Alt Emporda",
+            "coordinates": [
               3.1107,
               42.3069
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               3.1107,
               42.3069
@@ -240,17 +240,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 43.1,
-          "isocrona_min": 39,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 43.1,
+         "isochrone_min": 39,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 5,
-          "reduccio_isocrona_pct": 11.4,
-          "casos_beneficiats_any": 70,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 5,
+         "reduction_isocrhone_pct": 11.4,
+          "cases_beneficiaries_year": 70,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -264,32 +264,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Alt Penedes",
-        "provincia": "Barcelona",
-        "poblacio": 246968,
-        "casos_ictus_any": 38,
-        "incidencia_per_100k": 15.4,
-        "casos_tractament_fibrinolisi": 11,
-        "casos_trombectomia": 4,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Alt Penedes",
-            "coords": [
+        "region": "Alt Penedes",
+        "province": "Barcelona",
+        "population": 246968,
+        "cases_stroke_an": 38,
+        "incidence_of_100k": 15.4,
+        "cases_treatment_fibrinolysis": 11,
+        "cases_thrombectomy": 4,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Alt Penedes",
+            "coordinates": [
               1.7331,
               41.4124
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.7331,
               41.4124
@@ -311,38 +311,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 32.0,
-          "isocrona_min": 36,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 32.0,
+         "isochrone_min": 36,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Alt Penedes",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Alt Penedes",
+            "coordinates": [
               1.738,
               41.4053
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.738,
               41.4053
@@ -364,17 +364,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 28.6,
-          "isocrona_min": 26,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 28.6,
+         "isochrone_min": 26,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 10,
-          "reduccio_isocrona_pct": 27.8,
-          "casos_beneficiats_any": 30,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 10,
+         "reduction_isocrhone_pct": 27.8,
+          "cases_beneficiaries_year": 30,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -388,32 +388,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Alt Urgell",
-        "provincia": "Lleida",
-        "poblacio": 348035,
-        "casos_ictus_any": 127,
-        "incidencia_per_100k": 36.5,
-        "casos_tractament_fibrinolisi": 35,
-        "casos_trombectomia": 11,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Alt Urgell",
-            "coords": [
+        "region": "Alt Urgell",
+        "province": "Lleida",
+        "population": 348035,
+        "cases_stroke_an": 127,
+        "incidence_of_100k": 36.5,
+        "cases_treatment_fibrinolysis": 35,
+        "cases_thrombectomy": 11,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Alt Urgell",
+            "coordinates": [
               1.4706,
               42.3666
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.4706,
               42.3666
@@ -435,38 +435,38 @@
               41.61
             ]
           ],
-          "distancia_km": 110.4,
-          "isocrona_min": 123,
-          "isocrona_critica": true,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 110.4,
+         "isochrone_min": 123,
+         "critical_isochrone": true,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Alt Urgell",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Alt Urgell",
+            "coordinates": [
               1.4337,
               42.3219
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.4337,
               42.3219
@@ -488,17 +488,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 103.5,
-          "isocrona_min": 94,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 103.5,
+         "isochrone_min": 94,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 29,
-          "reduccio_isocrona_pct": 23.6,
-          "casos_beneficiats_any": 88,
-          "zona_critica": true
+        "comparison": {
+          "savings_min": 29,
+         "reduction_isocrhone_pct": 23.6,
+          "cases_beneficiaries_year": 88,
+          "critical_zone": true
         }
       },
       "geometry": {
@@ -512,32 +512,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Alta Ribagorca",
-        "provincia": "Lleida",
-        "poblacio": 387580,
-        "casos_ictus_any": 219,
-        "incidencia_per_100k": 56.5,
-        "casos_tractament_fibrinolisi": 46,
-        "casos_trombectomia": 14,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Alta Ribagorca",
-            "coords": [
+        "region": "Alta Ribagorca",
+        "province": "Lleida",
+        "population": 387580,
+        "cases_stroke_an": 219,
+        "incidence_of_100k": 56.5,
+        "cases_treatment_fibrinolysis": 46,
+        "cases_thrombectomy": 14,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Alta Ribagorca",
+            "coordinates": [
               0.8665,
               42.5466
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8665,
               42.5466
@@ -559,38 +559,38 @@
               41.61
             ]
           ],
-          "distancia_km": 106.3,
-          "isocrona_min": 118,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 106.3,
+         "isochrone_min": 118,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Alta Ribagorca",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Alta Ribagorca",
+            "coordinates": [
               0.8839,
               42.4922
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8839,
               42.4922
@@ -612,17 +612,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 99.8,
-          "isocrona_min": 91,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 99.8,
+         "isochrone_min": 91,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 27,
-          "reduccio_isocrona_pct": 22.9,
-          "casos_beneficiats_any": 150,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 27,
+         "reduction_isocrhone_pct": 22.9,
+          "cases_beneficiaries_year": 150,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -636,32 +636,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Anoia",
-        "provincia": "Barcelona",
-        "poblacio": 364699,
-        "casos_ictus_any": 151,
-        "incidencia_per_100k": 41.4,
-        "casos_tractament_fibrinolisi": 63,
-        "casos_trombectomia": 13,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Anoia",
-            "coords": [
+        "region": "Anoia",
+        "province": "Barcelona",
+        "population": 364699,
+        "cases_stroke_an": 151,
+        "incidence_of_100k": 41.4,
+        "cases_treatment_fibrinolysis": 63,
+        "cases_thrombectomy": 13,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Anoia",
+            "coordinates": [
               1.5267,
               41.5294
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5267,
               41.5294
@@ -683,38 +683,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 50.5,
-          "isocrona_min": 56,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 50.5,
+         "isochrone_min": 56,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Anoia",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Anoia",
+            "coordinates": [
               1.5472,
               41.5605
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5472,
               41.5605
@@ -736,17 +736,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 38.4,
-          "isocrona_min": 35,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 38.4,
+         "isochrone_min": 35,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 21,
-          "reduccio_isocrona_pct": 37.5,
-          "casos_beneficiats_any": 83,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 21,
+         "reduction_isocrhone_pct": 37.5,
+          "cases_beneficiaries_year": 83,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -760,32 +760,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Bages",
-        "provincia": "Barcelona",
-        "poblacio": 520340,
-        "casos_ictus_any": 180,
-        "incidencia_per_100k": 34.6,
-        "casos_tractament_fibrinolisi": 50,
-        "casos_trombectomia": 10,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Bages",
-            "coords": [
+        "region": "Bages",
+        "province": "Barcelona",
+        "population": 520340,
+        "cases_stroke_an": 180,
+        "incidence_of_100k": 34.6,
+        "cases_treatment_fibrinolysis": 50,
+        "cases_thrombectomy": 10,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Bages",
+            "coordinates": [
               1.8045,
               41.759
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.8045,
               41.759
@@ -807,38 +807,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 45.1,
-          "isocrona_min": 50,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 45.1,
+         "isochrone_min": 50,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Bages",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Bages",
+            "coordinates": [
               1.856,
               41.7532
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.856,
               41.7532
@@ -860,17 +860,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 24.7,
-          "isocrona_min": 22,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 24.7,
+         "isochrone_min": 22,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 28,
-          "reduccio_isocrona_pct": 56.0,
-          "casos_beneficiats_any": 118,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 28,
+         "reduction_isocrhone_pct": 56.0,
+          "cases_beneficiaries_year": 118,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -884,32 +884,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Baix Camp",
-        "provincia": "Tarragona",
-        "poblacio": 218922,
-        "casos_ictus_any": 123,
-        "incidencia_per_100k": 56.2,
-        "casos_tractament_fibrinolisi": 52,
-        "casos_trombectomia": 13,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Baix Camp",
-            "coords": [
+        "region": "Baix Camp",
+        "province": "Tarragona",
+        "population": 218922,
+        "cases_stroke_an": 123,
+        "incidence_of_100k": 56.2,
+        "cases_treatment_fibrinolysis": 52,
+        "cases_thrombectomy": 13,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Baix Camp",
+            "coordinates": [
               1.1128,
               41.1272
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1128,
               41.1272
@@ -931,38 +931,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 11.1,
-          "isocrona_min": 12,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 11.1,
+         "isochrone_min": 12,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Baix Camp",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Baix Camp",
+            "coordinates": [
               1.1103,
               41.1257
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1103,
               41.1257
@@ -984,17 +984,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 52.8,
-          "isocrona_min": 48,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 52.8,
+         "isochrone_min": 48,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 76,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 76,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1008,32 +1008,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Baix Ebre",
-        "provincia": "Tarragona",
-        "poblacio": 232643,
-        "casos_ictus_any": 263,
-        "incidencia_per_100k": 113.0,
-        "casos_tractament_fibrinolisi": 69,
-        "casos_trombectomia": 29,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Baix Ebre",
-            "coords": [
+        "region": "Baix Ebre",
+        "province": "Tarragona",
+        "population": 232643,
+        "cases_stroke_an": 263,
+        "incidence_of_100k": 113.0,
+        "cases_treatment_fibrinolysis": 69,
+        "cases_thrombectomy": 29,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Baix Ebre",
+            "coordinates": [
               0.5857,
               40.8801
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.5857,
               40.8801
@@ -1055,38 +1055,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 61.3,
-          "isocrona_min": 68,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 61.3,
+         "isochrone_min": 68,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Baix Ebre",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Baix Ebre",
+            "coordinates": [
               0.6062,
               40.8713
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.6062,
               40.8713
@@ -1108,17 +1108,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 2.0,
-          "isocrona_min": 2,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 2.0,
+         "isochrone_min": 2,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 66,
-          "reduccio_isocrona_pct": 97.1,
-          "casos_beneficiats_any": 152,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 66,
+         "reduction_isocrhone_pct": 97.1,
+          "cases_beneficiaries_year": 152,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1132,32 +1132,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Baix Emporda",
-        "provincia": "Girona",
-        "poblacio": 207448,
-        "casos_ictus_any": 113,
-        "incidencia_per_100k": 54.5,
-        "casos_tractament_fibrinolisi": 47,
-        "casos_trombectomia": 7,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Baix Emporda",
-            "coords": [
+        "region": "Baix Emporda",
+        "province": "Girona",
+        "population": 207448,
+        "cases_stroke_an": 113,
+        "incidence_of_100k": 54.5,
+        "cases_treatment_fibrinolysis": 47,
+        "cases_thrombectomy": 7,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Baix Emporda",
+            "coordinates": [
               3.1022,
               41.9284
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               3.1022,
               41.9284
@@ -1179,38 +1179,38 @@
               41.995
             ]
           ],
-          "distancia_km": 24.5,
-          "isocrona_min": 27,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 24.5,
+         "isochrone_min": 27,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Baix Emporda",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Baix Emporda",
+            "coordinates": [
               3.081,
               41.9478
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               3.081,
               41.9478
@@ -1232,17 +1232,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 21.0,
-          "isocrona_min": 19,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 21.0,
+         "isochrone_min": 19,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 8,
-          "reduccio_isocrona_pct": 29.6,
-          "casos_beneficiats_any": 88,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 8,
+         "reduction_isocrhone_pct": 29.6,
+          "cases_beneficiaries_year": 88,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1256,32 +1256,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Baix Llobregat",
-        "provincia": "Barcelona",
-        "poblacio": 405382,
-        "casos_ictus_any": 99,
-        "incidencia_per_100k": 24.4,
-        "casos_tractament_fibrinolisi": 27,
-        "casos_trombectomia": 14,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Baix Llobregat",
-            "coords": [
+        "region": "Baix Llobregat",
+        "province": "Barcelona",
+        "population": 405382,
+        "cases_stroke_an": 99,
+        "incidence_of_100k": 24.4,
+        "cases_treatment_fibrinolysis": 27,
+        "cases_thrombectomy": 14,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Baix Llobregat",
+            "coordinates": [
               1.9701,
               41.3434
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.9701,
               41.3434
@@ -1303,38 +1303,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 15.4,
-          "isocrona_min": 17,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 15.4,
+         "isochrone_min": 17,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Baix Llobregat",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Baix Llobregat",
+            "coordinates": [
               2.0256,
               41.3671
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.0256,
               41.3671
@@ -1356,17 +1356,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 21.8,
-          "isocrona_min": 20,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 21.8,
+         "isochrone_min": 20,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 77,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 77,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1380,32 +1380,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Baix Penedes",
-        "provincia": "Tarragona",
-        "poblacio": 67642,
-        "casos_ictus_any": 95,
-        "incidencia_per_100k": 140.4,
-        "casos_tractament_fibrinolisi": 35,
-        "casos_trombectomia": 8,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Baix Penedes",
-            "coords": [
+        "region": "Baix Penedes",
+        "province": "Tarragona",
+        "population": 67642,
+        "cases_stroke_an": 95,
+        "incidence_of_100k": 140.4,
+        "cases_treatment_fibrinolysis": 35,
+        "cases_thrombectomy": 8,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Baix Penedes",
+            "coordinates": [
               1.5943,
               41.1915
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5943,
               41.1915
@@ -1427,38 +1427,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 30.4,
-          "isocrona_min": 34,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 30.4,
+         "isochrone_min": 34,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Baix Penedes",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Baix Penedes",
+            "coordinates": [
               1.5478,
               41.2224
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5478,
               41.2224
@@ -1480,17 +1480,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 90.0,
-          "isocrona_min": 82,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 90.0,
+         "isochrone_min": 82,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 62,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 62,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1504,32 +1504,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Barcelones",
-        "provincia": "Barcelona",
-        "poblacio": 487434,
-        "casos_ictus_any": 168,
-        "incidencia_per_100k": 34.5,
-        "casos_tractament_fibrinolisi": 76,
-        "casos_trombectomia": 30,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Barcelones",
-            "coords": [
+        "region": "Barcelones",
+        "province": "Barcelona",
+        "population": 487434,
+        "cases_stroke_an": 168,
+        "incidence_of_100k": 34.5,
+        "cases_treatment_fibrinolysis": 76,
+        "cases_thrombectomy": 30,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Barcelones",
+            "coordinates": [
               2.139,
               41.4151
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.139,
               41.4151
@@ -1551,38 +1551,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 2.3,
-          "isocrona_min": 3,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 2.3,
+         "isochrone_min": 3,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Barcelones",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Barcelones",
+            "coordinates": [
               2.1244,
               41.3975
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.1244,
               41.3975
@@ -1604,17 +1604,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 20.8,
-          "isocrona_min": 19,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 20.8,
+         "isochrone_min": 19,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 120,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 120,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1628,32 +1628,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Bergueda",
-        "provincia": "Barcelona",
-        "poblacio": 321921,
-        "casos_ictus_any": 19,
-        "incidencia_per_100k": 5.9,
-        "casos_tractament_fibrinolisi": 8,
-        "casos_trombectomia": 3,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Bergueda",
-            "coords": [
+        "region": "Bergueda",
+        "province": "Barcelona",
+        "population": 321921,
+        "cases_stroke_an": 19,
+        "incidence_of_100k": 5.9,
+        "cases_treatment_fibrinolysis": 8,
+        "cases_thrombectomy": 3,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Bergueda",
+            "coordinates": [
               1.8926,
               41.9762
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.8926,
               41.9762
@@ -1675,38 +1675,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 63.8,
-          "isocrona_min": 71,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 63.8,
+         "isochrone_min": 71,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Bergueda",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Bergueda",
+            "coordinates": [
               1.8894,
               41.9859
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.8894,
               41.9859
@@ -1728,17 +1728,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 48.1,
-          "isocrona_min": 44,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 48.1,
+         "isochrone_min": 44,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 27,
-          "reduccio_isocrona_pct": 38.0,
-          "casos_beneficiats_any": 11,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 27,
+         "reduction_isocrhone_pct": 38.0,
+          "cases_beneficiaries_year": 11,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1752,32 +1752,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Cerdanya",
-        "provincia": "Girona",
-        "poblacio": 145174,
-        "casos_ictus_any": 185,
-        "incidencia_per_100k": 127.4,
-        "casos_tractament_fibrinolisi": 57,
-        "casos_trombectomia": 9,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Cerdanya",
-            "coords": [
+        "region": "Cerdanya",
+        "province": "Girona",
+        "population": 145174,
+        "cases_stroke_an": 185,
+        "incidence_of_100k": 127.4,
+        "cases_treatment_fibrinolysis": 57,
+        "cases_thrombectomy": 9,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Cerdanya",
+            "coordinates": [
               1.9582,
               42.3857
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.9582,
               42.3857
@@ -1799,38 +1799,38 @@
               41.995
             ]
           ],
-          "distancia_km": 83.2,
-          "isocrona_min": 92,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 83.2,
+         "isochrone_min": 92,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Cerdanya",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Cerdanya",
+            "coordinates": [
               1.9645,
               42.4031
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.9645,
               42.4031
@@ -1852,17 +1852,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 85.5,
-          "isocrona_min": 78,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 85.5,
+         "isochrone_min": 78,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 14,
-          "reduccio_isocrona_pct": 15.2,
-          "casos_beneficiats_any": 143,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 14,
+         "reduction_isocrhone_pct": 15.2,
+          "cases_beneficiaries_year": 143,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -1876,32 +1876,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Conca de Barbera",
-        "provincia": "Tarragona",
-        "poblacio": 269650,
-        "casos_ictus_any": 122,
-        "incidencia_per_100k": 45.2,
-        "casos_tractament_fibrinolisi": 54,
-        "casos_trombectomia": 18,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Conca de Barbera",
-            "coords": [
+        "region": "Conca de Barbera",
+        "province": "Tarragona",
+        "population": 269650,
+        "cases_stroke_an": 122,
+        "incidence_of_100k": 45.2,
+        "cases_treatment_fibrinolysis": 54,
+        "cases_thrombectomy": 18,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Conca de Barbera",
+            "coordinates": [
               1.1267,
               41.5245
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1267,
               41.5245
@@ -1923,38 +1923,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 46.2,
-          "isocrona_min": 51,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 46.2,
+         "isochrone_min": 51,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Conca de Barbera",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Conca de Barbera",
+            "coordinates": [
               1.1203,
               41.5558
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1203,
               41.5558
@@ -1976,17 +1976,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 88.8,
-          "isocrona_min": 81,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 88.8,
+         "isochrone_min": 81,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 75,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 75,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2000,32 +2000,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Garraf",
-        "provincia": "Barcelona",
-        "poblacio": 121346,
-        "casos_ictus_any": 96,
-        "incidencia_per_100k": 79.1,
-        "casos_tractament_fibrinolisi": 41,
-        "casos_trombectomia": 9,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Garraf",
-            "coords": [
+        "region": "Garraf",
+        "province": "Barcelona",
+        "population": 121346,
+        "cases_stroke_an": 96,
+        "incidence_of_100k": 79.1,
+        "cases_treatment_fibrinolysis": 41,
+        "cases_thrombectomy": 9,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Garraf",
+            "coordinates": [
               1.7763,
               41.2056
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.7763,
               41.2056
@@ -2047,38 +2047,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 37.7,
-          "isocrona_min": 42,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 37.7,
+         "isochrone_min": 42,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Garraf",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Garraf",
+            "coordinates": [
               1.7815,
               41.2153
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.7815,
               41.2153
@@ -2100,17 +2100,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 43.1,
-          "isocrona_min": 39,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 43.1,
+         "isochrone_min": 39,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 3,
-          "reduccio_isocrona_pct": 7.1,
-          "casos_beneficiats_any": 61,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 3,
+         "reduction_isocrhone_pct": 7.1,
+          "cases_beneficiaries_year": 61,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2124,32 +2124,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Garrigues",
-        "provincia": "Lleida",
-        "poblacio": 128944,
-        "casos_ictus_any": 29,
-        "incidencia_per_100k": 22.5,
-        "casos_tractament_fibrinolisi": 6,
-        "casos_trombectomia": 4,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Garrigues",
-            "coords": [
+        "region": "Garrigues",
+        "province": "Lleida",
+        "population": 128944,
+        "cases_stroke_an": 29,
+        "incidence_of_100k": 22.5,
+        "cases_treatment_fibrinolysis": 6,
+        "cases_thrombectomy": 4,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Garrigues",
+            "coordinates": [
               0.8893,
               41.3524
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8893,
               41.3524
@@ -2171,38 +2171,38 @@
               41.61
             ]
           ],
-          "distancia_km": 37.1,
-          "isocrona_min": 41,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 37.1,
+         "isochrone_min": 41,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Garrigues",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Garrigues",
+            "coordinates": [
               0.8715,
               41.3957
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8715,
               41.3957
@@ -2224,17 +2224,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 32.5,
-          "isocrona_min": 30,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 32.5,
+         "isochrone_min": 30,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 11,
-          "reduccio_isocrona_pct": 26.8,
-          "casos_beneficiats_any": 23,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 11,
+         "reduction_isocrhone_pct": 26.8,
+          "cases_beneficiaries_year": 23,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2248,32 +2248,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Garrotxa",
-        "provincia": "Girona",
-        "poblacio": 389913,
-        "casos_ictus_any": 115,
-        "incidencia_per_100k": 29.5,
-        "casos_tractament_fibrinolisi": 42,
-        "casos_trombectomia": 8,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Garrotxa",
-            "coords": [
+        "region": "Garrotxa",
+        "province": "Girona",
+        "population": 389913,
+        "cases_stroke_an": 115,
+        "incidence_of_100k": 29.5,
+        "cases_treatment_fibrinolysis": 42,
+        "cases_thrombectomy": 8,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Garrotxa",
+            "coordinates": [
               2.5459,
               42.2102
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.5459,
               42.2102
@@ -2295,38 +2295,38 @@
               41.995
             ]
           ],
-          "distancia_km": 32.9,
-          "isocrona_min": 37,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 32.9,
+         "isochrone_min": 37,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Garrotxa",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Garrotxa",
+            "coordinates": [
               2.5752,
               42.1907
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.5752,
               42.1907
@@ -2348,17 +2348,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 31.6,
-          "isocrona_min": 29,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 31.6,
+         "isochrone_min": 29,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 8,
-          "reduccio_isocrona_pct": 21.6,
-          "casos_beneficiats_any": 75,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 8,
+         "reduction_isocrhone_pct": 21.6,
+          "cases_beneficiaries_year": 75,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2372,32 +2372,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Girones",
-        "provincia": "Girona",
-        "poblacio": 326635,
-        "casos_ictus_any": 15,
-        "incidencia_per_100k": 4.6,
-        "casos_tractament_fibrinolisi": 5,
-        "casos_trombectomia": 2,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Girones",
-            "coords": [
+        "region": "Girones",
+        "province": "Girona",
+        "population": 326635,
+        "cases_stroke_an": 15,
+        "incidence_of_100k": 4.6,
+        "cases_treatment_fibrinolysis": 5,
+        "cases_thrombectomy": 2,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Girones",
+            "coordinates": [
               2.8205,
               41.9791
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.8205,
               41.9791
@@ -2419,38 +2419,38 @@
               41.995
             ]
           ],
-          "distancia_km": 1.8,
-          "isocrona_min": 2,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 1.8,
+         "isochrone_min": 2,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Girones",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Girones",
+            "coordinates": [
               2.8381,
               41.9926
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.8381,
               41.9926
@@ -2472,17 +2472,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 1.6,
-          "isocrona_min": 1,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 1.6,
+         "isochrone_min": 1,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 1,
-          "reduccio_isocrona_pct": 50.0,
-          "casos_beneficiats_any": 9,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 1,
+         "reduction_isocrhone_pct": 50.0,
+          "cases_beneficiaries_year": 9,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2496,32 +2496,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Maresme",
-        "provincia": "Barcelona",
-        "poblacio": 162511,
-        "casos_ictus_any": 116,
-        "incidencia_per_100k": 71.4,
-        "casos_tractament_fibrinolisi": 25,
-        "casos_trombectomia": 12,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Maresme",
-            "coords": [
+        "region": "Maresme",
+        "province": "Barcelona",
+        "population": 162511,
+        "cases_stroke_an": 116,
+        "incidence_of_100k": 71.4,
+        "cases_treatment_fibrinolysis": 25,
+        "cases_thrombectomy": 12,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Maresme",
+            "coordinates": [
               2.4882,
               41.5347
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.4882,
               41.5347
@@ -2543,38 +2543,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 33.1,
-          "isocrona_min": 37,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 33.1,
+         "isochrone_min": 37,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Maresme",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Maresme",
+            "coordinates": [
               2.5152,
               41.571
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.5152,
               41.571
@@ -2596,17 +2596,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 42.1,
-          "isocrona_min": 38,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 42.1,
+         "isochrone_min": 38,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 92,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 92,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2620,32 +2620,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Moianes",
-        "provincia": "Barcelona",
-        "poblacio": 495115,
-        "casos_ictus_any": 280,
-        "incidencia_per_100k": 56.6,
-        "casos_tractament_fibrinolisi": 112,
-        "casos_trombectomia": 38,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Moianes",
-            "coords": [
+        "region": "Moianes",
+        "province": "Barcelona",
+        "population": 495115,
+        "cases_stroke_an": 280,
+        "incidence_of_100k": 56.6,
+        "cases_treatment_fibrinolysis": 112,
+        "cases_thrombectomy": 38,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Moianes",
+            "coordinates": [
               2.0563,
               41.8517
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.0563,
               41.8517
@@ -2667,38 +2667,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 47.4,
-          "isocrona_min": 53,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 47.4,
+         "isochrone_min": 53,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Moianes",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Moianes",
+            "coordinates": [
               2.1042,
               41.8641
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.1042,
               41.8641
@@ -2720,17 +2720,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 34.4,
-          "isocrona_min": 31,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 34.4,
+         "isochrone_min": 31,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 22,
-          "reduccio_isocrona_pct": 41.5,
-          "casos_beneficiats_any": 172,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 22,
+         "reduction_isocrhone_pct": 41.5,
+          "cases_beneficiaries_year": 172,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2744,32 +2744,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Montsia",
-        "provincia": "Tarragona",
-        "poblacio": 298782,
-        "casos_ictus_any": 141,
-        "incidencia_per_100k": 47.2,
-        "casos_tractament_fibrinolisi": 31,
-        "casos_trombectomia": 12,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Montsia",
-            "coords": [
+        "region": "Montsia",
+        "province": "Tarragona",
+        "population": 298782,
+        "cases_stroke_an": 141,
+        "incidence_of_100k": 47.2,
+        "cases_treatment_fibrinolysis": 31,
+        "cases_thrombectomy": 12,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Montsia",
+            "coordinates": [
               0.5492,
               40.668
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.5492,
               40.668
@@ -2791,38 +2791,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 77.0,
-          "isocrona_min": 86,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 77.0,
+         "isochrone_min": 86,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Montsia",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Montsia",
+            "coordinates": [
               0.5409,
               40.6532
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.5409,
               40.6532
@@ -2844,17 +2844,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 24.0,
-          "isocrona_min": 22,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 24.0,
+         "isochrone_min": 22,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 64,
-          "reduccio_isocrona_pct": 74.4,
-          "casos_beneficiats_any": 92,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 64,
+         "reduction_isocrhone_pct": 74.4,
+          "cases_beneficiaries_year": 92,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2868,32 +2868,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Noguera",
-        "provincia": "Lleida",
-        "poblacio": 406858,
-        "casos_ictus_any": 25,
-        "incidencia_per_100k": 6.1,
-        "casos_tractament_fibrinolisi": 11,
-        "casos_trombectomia": 4,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Noguera",
-            "coords": [
+        "region": "Noguera",
+        "province": "Lleida",
+        "population": 406858,
+        "cases_stroke_an": 25,
+        "incidence_of_100k": 6.1,
+        "cases_treatment_fibrinolysis": 11,
+        "cases_thrombectomy": 4,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Noguera",
+            "coordinates": [
               0.9819,
               41.8433
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.9819,
               41.8433
@@ -2915,38 +2915,38 @@
               41.61
             ]
           ],
-          "distancia_km": 40.6,
-          "isocrona_min": 45,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 40.6,
+         "isochrone_min": 45,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Noguera",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Noguera",
+            "coordinates": [
               0.9712,
               41.8101
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.9712,
               41.8101
@@ -2968,17 +2968,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 36.4,
-          "isocrona_min": 33,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 36.4,
+         "isochrone_min": 33,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 12,
-          "reduccio_isocrona_pct": 26.7,
-          "casos_beneficiats_any": 19,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 12,
+         "reduction_isocrhone_pct": 26.7,
+          "cases_beneficiaries_year": 19,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -2992,32 +2992,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Osona",
-        "provincia": "Barcelona",
-        "poblacio": 421160,
-        "casos_ictus_any": 28,
-        "incidencia_per_100k": 6.6,
-        "casos_tractament_fibrinolisi": 12,
-        "casos_trombectomia": 2,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Osona",
-            "coords": [
+        "region": "Osona",
+        "province": "Barcelona",
+        "population": 421160,
+        "cases_stroke_an": 28,
+        "incidence_of_100k": 6.6,
+        "cases_treatment_fibrinolysis": 12,
+        "cases_thrombectomy": 2,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Osona",
+            "coordinates": [
               2.2555,
               41.9431
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.2555,
               41.9431
@@ -3039,38 +3039,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 58.5,
-          "isocrona_min": 65,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 58.5,
+         "isochrone_min": 65,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Osona",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Osona",
+            "coordinates": [
               2.225,
               41.929
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.225,
               41.929
@@ -3092,17 +3092,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 44.5,
-          "isocrona_min": 40,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 44.5,
+         "isochrone_min": 40,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 25,
-          "reduccio_isocrona_pct": 38.5,
-          "casos_beneficiats_any": 22,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 25,
+         "reduction_isocrhone_pct": 38.5,
+          "cases_beneficiaries_year": 22,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3116,32 +3116,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Pallars Jussa",
-        "provincia": "Lleida",
-        "poblacio": 79951,
-        "casos_ictus_any": 129,
-        "incidencia_per_100k": 161.3,
-        "casos_tractament_fibrinolisi": 32,
-        "casos_trombectomia": 7,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Pallars Jussa",
-            "coords": [
+        "region": "Pallars Jussa",
+        "province": "Lleida",
+        "population": 79951,
+        "cases_stroke_an": 129,
+        "incidence_of_100k": 161.3,
+        "cases_treatment_fibrinolysis": 32,
+        "cases_thrombectomy": 7,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Pallars Jussa",
+            "coordinates": [
               0.9836,
               42.1924
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.9836,
               42.1924
@@ -3163,38 +3163,38 @@
               41.61
             ]
           ],
-          "distancia_km": 71.9,
-          "isocrona_min": 80,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 71.9,
+         "isochrone_min": 80,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Pallars Jussa",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Pallars Jussa",
+            "coordinates": [
               0.982,
               42.2103
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.982,
               42.2103
@@ -3216,17 +3216,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 72.6,
-          "isocrona_min": 66,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 72.6,
+         "isochrone_min": 66,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 14,
-          "reduccio_isocrona_pct": 17.5,
-          "casos_beneficiats_any": 102,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 14,
+         "reduction_isocrhone_pct": 17.5,
+          "cases_beneficiaries_year": 102,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3240,32 +3240,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Pallars Sobira",
-        "provincia": "Lleida",
-        "poblacio": 34925,
-        "casos_ictus_any": 70,
-        "incidencia_per_100k": 200.4,
-        "casos_tractament_fibrinolisi": 30,
-        "casos_trombectomia": 5,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Pallars Sobira",
-            "coords": [
+        "region": "Pallars Sobira",
+        "province": "Lleida",
+        "population": 34925,
+        "cases_stroke_an": 70,
+        "incidence_of_100k": 200.4,
+        "cases_treatment_fibrinolysis": 30,
+        "cases_thrombectomy": 5,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Pallars Sobira",
+            "coordinates": [
               1.159,
               42.5212
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.159,
               42.5212
@@ -3287,38 +3287,38 @@
               41.61
             ]
           ],
-          "distancia_km": 111.1,
-          "isocrona_min": 123,
-          "isocrona_critica": true,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 111.1,
+         "isochrone_min": 123,
+         "critical_isochrone": true,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Pallars Sobira",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Pallars Sobira",
+            "coordinates": [
               1.1578,
               42.5092
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1578,
               42.5092
@@ -3340,17 +3340,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 108.8,
-          "isocrona_min": 99,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 108.8,
+         "isochrone_min": 99,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 24,
-          "reduccio_isocrona_pct": 19.5,
-          "casos_beneficiats_any": 40,
-          "zona_critica": true
+        "comparison": {
+          "savings_min": 24,
+         "reduction_isocrhone_pct": 19.5,
+          "cases_beneficiaries_year": 40,
+          "critical_zone": true
         }
       },
       "geometry": {
@@ -3364,32 +3364,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Pla d'Urgell",
-        "provincia": "Lleida",
-        "poblacio": 21266,
-        "casos_ictus_any": 189,
-        "incidencia_per_100k": 888.7,
-        "casos_tractament_fibrinolisi": 68,
-        "casos_trombectomia": 30,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Pla d'Urgell",
-            "coords": [
+        "region": "Pla d'Urgell",
+        "province": "Lleida",
+        "population": 21266,
+        "cases_stroke_an": 189,
+        "incidence_of_100k": 888.7,
+        "cases_treatment_fibrinolysis": 68,
+        "cases_thrombectomy": 30,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Pla d'Urgell",
+            "coordinates": [
               0.9377,
               41.6526
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.9377,
               41.6526
@@ -3411,38 +3411,38 @@
               41.61
             ]
           ],
-          "distancia_km": 28.0,
-          "isocrona_min": 31,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 28.0,
+         "isochrone_min": 31,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Pla d'Urgell",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Pla d'Urgell",
+            "coordinates": [
               0.893,
               41.6609
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.893,
               41.6609
@@ -3464,17 +3464,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 23.5,
-          "isocrona_min": 21,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 23.5,
+         "isochrone_min": 21,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 10,
-          "reduccio_isocrona_pct": 32.3,
-          "casos_beneficiats_any": 143,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 10,
+         "reduction_isocrhone_pct": 32.3,
+          "cases_beneficiaries_year": 143,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3488,32 +3488,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Pla de l'Estany",
-        "provincia": "Girona",
-        "poblacio": 300477,
-        "casos_ictus_any": 59,
-        "incidencia_per_100k": 19.6,
-        "casos_tractament_fibrinolisi": 17,
-        "casos_trombectomia": 3,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Pla de l'Estany",
-            "coords": [
+        "region": "Pla de l'Estany",
+        "province": "Girona",
+        "population": 300477,
+        "cases_stroke_an": 59,
+        "incidence_of_100k": 19.6,
+        "cases_treatment_fibrinolysis": 17,
+        "cases_thrombectomy": 3,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Pla de l'Estany",
+            "coordinates": [
               2.7562,
               42.1013
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.7562,
               42.1013
@@ -3535,38 +3535,38 @@
               41.995
             ]
           ],
-          "distancia_km": 12.9,
-          "isocrona_min": 14,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 12.9,
+         "isochrone_min": 14,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Pla de l'Estany",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Pla de l'Estany",
+            "coordinates": [
               2.7312,
               42.1233
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.7312,
               42.1233
@@ -3588,17 +3588,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 18.0,
-          "isocrona_min": 16,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 18.0,
+         "isochrone_min": 16,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 40,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 40,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3612,32 +3612,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Priorat",
-        "provincia": "Tarragona",
-        "poblacio": 507219,
-        "casos_ictus_any": 138,
-        "incidencia_per_100k": 27.2,
-        "casos_tractament_fibrinolisi": 35,
-        "casos_trombectomia": 19,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Priorat",
-            "coords": [
+        "region": "Priorat",
+        "province": "Tarragona",
+        "population": 507219,
+        "cases_stroke_an": 138,
+        "incidence_of_100k": 27.2,
+        "cases_treatment_fibrinolysis": 35,
+        "cases_thrombectomy": 19,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Priorat",
+            "coordinates": [
               0.8921,
               41.1827
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8921,
               41.1827
@@ -3659,38 +3659,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 30.3,
-          "isocrona_min": 34,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 30.3,
+         "isochrone_min": 34,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Priorat",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Priorat",
+            "coordinates": [
               0.9009,
               41.1589
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.9009,
               41.1589
@@ -3712,17 +3712,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 42.0,
-          "isocrona_min": 38,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 42.0,
+         "isochrone_min": 38,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 80,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 80,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3736,32 +3736,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Ribera d'Ebre",
-        "provincia": "Tarragona",
-        "poblacio": 208845,
-        "casos_ictus_any": 109,
-        "incidencia_per_100k": 52.2,
-        "casos_tractament_fibrinolisi": 36,
-        "casos_trombectomia": 9,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Ribera d'Ebre",
-            "coords": [
+        "region": "Ribera d'Ebre",
+        "province": "Tarragona",
+        "population": 208845,
+        "cases_stroke_an": 109,
+        "incidence_of_100k": 52.2,
+        "cases_treatment_fibrinolysis": 36,
+        "cases_thrombectomy": 9,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Ribera d'Ebre",
+            "coordinates": [
               0.7497,
               41.1158
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.7497,
               41.1158
@@ -3783,38 +3783,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 41.4,
-          "isocrona_min": 46,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 41.4,
+         "isochrone_min": 46,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Ribera d'Ebre",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Ribera d'Ebre",
+            "coordinates": [
               0.7802,
               41.1453
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.7802,
               41.1453
@@ -3836,17 +3836,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 35.1,
-          "isocrona_min": 32,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 35.1,
+         "isochrone_min": 32,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 14,
-          "reduccio_isocrona_pct": 30.4,
-          "casos_beneficiats_any": 73,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 14,
+         "reduction_isocrhone_pct": 30.4,
+          "cases_beneficiaries_year": 73,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3860,32 +3860,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Ripolles",
-        "provincia": "Girona",
-        "poblacio": 306151,
-        "casos_ictus_any": 21,
-        "incidencia_per_100k": 6.9,
-        "casos_tractament_fibrinolisi": 9,
-        "casos_trombectomia": 2,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Ripolles",
-            "coords": [
+        "region": "Ripolles",
+        "province": "Girona",
+        "population": 306151,
+        "cases_stroke_an": 21,
+        "incidence_of_100k": 6.9,
+        "cases_treatment_fibrinolysis": 9,
+        "cases_thrombectomy": 2,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Ripolles",
+            "coordinates": [
               2.2149,
               42.2464
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.2149,
               42.2464
@@ -3907,38 +3907,38 @@
               41.995
             ]
           ],
-          "distancia_km": 57.2,
-          "isocrona_min": 64,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 57.2,
+         "isochrone_min": 64,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Ripolles",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Ripolles",
+            "coordinates": [
               2.1978,
               42.2231
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.1978,
               42.2231
@@ -3960,17 +3960,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 58.9,
-          "isocrona_min": 54,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 58.9,
+         "isochrone_min": 54,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 10,
-          "reduccio_isocrona_pct": 15.6,
-          "casos_beneficiats_any": 16,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 10,
+         "reduction_isocrhone_pct": 15.6,
+          "cases_beneficiaries_year": 16,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -3984,32 +3984,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Segarra",
-        "provincia": "Lleida",
-        "poblacio": 406855,
-        "casos_ictus_any": 130,
-        "incidencia_per_100k": 32.0,
-        "casos_tractament_fibrinolisi": 36,
-        "casos_trombectomia": 17,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Segarra",
-            "coords": [
+        "region": "Segarra",
+        "province": "Lleida",
+        "population": 406855,
+        "cases_stroke_an": 130,
+        "incidence_of_100k": 32.0,
+        "cases_treatment_fibrinolysis": 36,
+        "cases_thrombectomy": 17,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Segarra",
+            "coordinates": [
               1.197,
               41.6799
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.197,
               41.6799
@@ -4031,38 +4031,38 @@
               41.61
             ]
           ],
-          "distancia_km": 49.8,
-          "isocrona_min": 55,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 49.8,
+         "isochrone_min": 55,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Segarra",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Segarra",
+            "coordinates": [
               1.2216,
               41.7127
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.2216,
               41.7127
@@ -4084,17 +4084,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 51.4,
-          "isocrona_min": 47,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 51.4,
+         "isochrone_min": 47,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 8,
-          "reduccio_isocrona_pct": 14.5,
-          "casos_beneficiats_any": 81,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 8,
+         "reduction_isocrhone_pct": 14.5,
+          "cases_beneficiaries_year": 81,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4108,32 +4108,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Segria",
-        "provincia": "Lleida",
-        "poblacio": 310099,
-        "casos_ictus_any": 133,
-        "incidencia_per_100k": 42.9,
-        "casos_tractament_fibrinolisi": 57,
-        "casos_trombectomia": 20,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Segria",
-            "coords": [
+        "region": "Segria",
+        "province": "Lleida",
+        "population": 310099,
+        "cases_stroke_an": 133,
+        "incidence_of_100k": 42.9,
+        "cases_treatment_fibrinolysis": 57,
+        "cases_thrombectomy": 20,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Segria",
+            "coordinates": [
               0.6291,
               41.6289
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.6291,
               41.6289
@@ -4155,38 +4155,38 @@
               41.61
             ]
           ],
-          "distancia_km": 2.9,
-          "isocrona_min": 3,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 2.9,
+         "isochrone_min": 3,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Segria",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Segria",
+            "coordinates": [
               0.6139,
               41.6279
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.6139,
               41.6279
@@ -4208,17 +4208,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 1.3,
-          "isocrona_min": 1,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 1.3,
+         "isochrone_min": 1,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 2,
-          "reduccio_isocrona_pct": 66.7,
-          "casos_beneficiats_any": 92,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 2,
+         "reduction_isocrhone_pct": 66.7,
+          "cases_beneficiaries_year": 92,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4232,32 +4232,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Selva",
-        "provincia": "Girona",
-        "poblacio": 468485,
-        "casos_ictus_any": 162,
-        "incidencia_per_100k": 34.6,
-        "casos_tractament_fibrinolisi": 53,
-        "casos_trombectomia": 18,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Selva",
-            "coords": [
+        "region": "Selva",
+        "province": "Girona",
+        "population": 468485,
+        "cases_stroke_an": 162,
+        "incidence_of_100k": 34.6,
+        "cases_treatment_fibrinolysis": 53,
+        "cases_thrombectomy": 18,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Selva",
+            "coordinates": [
               2.6775,
               41.8446
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.6775,
               41.8446
@@ -4279,38 +4279,38 @@
               41.995
             ]
           ],
-          "distancia_km": 20.5,
-          "isocrona_min": 23,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 20.5,
+         "isochrone_min": 23,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Selva",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Selva",
+            "coordinates": [
               2.712,
               41.8599
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Santa Caterina",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Santa Caterina",
+            "type": "Hospital primari",
+            "coordinates": [
               2.8311,
               41.9794
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari de Girona",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari de Girona",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.82,
               41.995
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.712,
               41.8599
@@ -4332,17 +4332,17 @@
               41.9794
             ]
           ],
-          "distancia_km": 16.5,
-          "isocrona_min": 15,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 16.5,
+         "isochrone_min": 15,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 8,
-          "reduccio_isocrona_pct": 34.8,
-          "casos_beneficiats_any": 100,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 8,
+         "reduction_isocrhone_pct": 34.8,
+          "cases_beneficiaries_year": 100,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4356,32 +4356,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Solsones",
-        "provincia": "Lleida",
-        "poblacio": 191700,
-        "casos_ictus_any": 35,
-        "incidencia_per_100k": 18.3,
-        "casos_tractament_fibrinolisi": 12,
-        "casos_trombectomia": 5,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Solsones",
-            "coords": [
+        "region": "Solsones",
+        "province": "Lleida",
+        "population": 191700,
+        "cases_stroke_an": 35,
+        "incidence_of_100k": 18.3,
+        "cases_treatment_fibrinolysis": 12,
+        "cases_thrombectomy": 5,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Solsones",
+            "coordinates": [
               1.5149,
               42.0091
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5149,
               42.0091
@@ -4403,38 +4403,38 @@
               41.61
             ]
           ],
-          "distancia_km": 87.5,
-          "isocrona_min": 97,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 87.5,
+         "isochrone_min": 97,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Solsones",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Solsones",
+            "coordinates": [
               1.5417,
               41.9809
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.5417,
               41.9809
@@ -4456,17 +4456,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 86.7,
-          "isocrona_min": 79,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 86.7,
+         "isochrone_min": 79,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 18,
-          "reduccio_isocrona_pct": 18.6,
-          "casos_beneficiats_any": 23,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 18,
+         "reduction_isocrhone_pct": 18.6,
+          "cases_beneficiaries_year": 23,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4480,32 +4480,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Tarragues",
-        "provincia": "Tarragona",
-        "poblacio": 272659,
-        "casos_ictus_any": 176,
-        "incidencia_per_100k": 64.5,
-        "casos_tractament_fibrinolisi": 79,
-        "casos_trombectomia": 24,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Tarragues",
-            "coords": [
+        "region": "Tarragues",
+        "province": "Tarragona",
+        "population": 272659,
+        "cases_stroke_an": 176,
+        "incidence_of_100k": 64.5,
+        "cases_treatment_fibrinolysis": 79,
+        "cases_thrombectomy": 24,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Tarragues",
+            "coordinates": [
               1.2394,
               41.1449
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.2394,
               41.1449
@@ -4527,38 +4527,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 2.9,
-          "isocrona_min": 3,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 2.9,
+         "isochrone_min": 3,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Tarragues",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Tarragues",
+            "coordinates": [
               1.2443,
               41.1176
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.2443,
               41.1176
@@ -4580,17 +4580,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 62.1,
-          "isocrona_min": 56,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 62.1,
+         "isochrone_min": 56,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 0,
-          "reduccio_isocrona_pct": 0.0,
-          "casos_beneficiats_any": 102,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 0,
+         "reduction_isocrhone_pct": 0.0,
+          "cases_beneficiaries_year": 102,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4604,32 +4604,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Terra Alta",
-        "provincia": "Tarragona",
-        "poblacio": 174071,
-        "casos_ictus_any": 137,
-        "incidencia_per_100k": 78.7,
-        "casos_tractament_fibrinolisi": 56,
-        "casos_trombectomia": 9,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Terra Alta",
-            "coords": [
+        "region": "Terra Alta",
+        "province": "Tarragona",
+        "population": 174071,
+        "cases_stroke_an": 137,
+        "incidence_of_100k": 78.7,
+        "cases_treatment_fibrinolysis": 56,
+        "cases_thrombectomy": 9,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Terra Alta",
+            "coordinates": [
               0.4386,
               40.9708
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.4386,
               40.9708
@@ -4651,38 +4651,38 @@
               41.1189
             ]
           ],
-          "distancia_km": 69.6,
-          "isocrona_min": 77,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 69.6,
+         "isochrone_min": 77,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Terra Alta",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Terra Alta",
+            "coordinates": [
               0.4445,
               40.9835
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Verge de la Cinta",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Verge de la Cinta",
+            "type": "Hospital primari",
+            "coordinates": [
               0.5833,
               40.8667
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Joan XXIII",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Joan XXIII",
+            "type": "Hospital terciari",
+            "coordinates": [
               1.2444,
               41.1189
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.4445,
               40.9835
@@ -4704,17 +4704,17 @@
               40.8667
             ]
           ],
-          "distancia_km": 17.5,
-          "isocrona_min": 16,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 17.5,
+         "isochrone_min": 16,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 61,
-          "reduccio_isocrona_pct": 79.2,
-          "casos_beneficiats_any": 96,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 61,
+         "reduction_isocrhone_pct": 79.2,
+          "cases_beneficiaries_year": 96,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4728,32 +4728,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Urgell",
-        "provincia": "Lleida",
-        "poblacio": 81201,
-        "casos_ictus_any": 84,
-        "incidencia_per_100k": 103.4,
-        "casos_tractament_fibrinolisi": 27,
-        "casos_trombectomia": 13,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Urgell",
-            "coords": [
+        "region": "Urgell",
+        "province": "Lleida",
+        "population": 81201,
+        "cases_stroke_an": 84,
+        "incidence_of_100k": 103.4,
+        "cases_treatment_fibrinolysis": 27,
+        "cases_thrombectomy": 13,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Urgell",
+            "coordinates": [
               1.1533,
               41.6507
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1533,
               41.6507
@@ -4775,38 +4775,38 @@
               41.61
             ]
           ],
-          "distancia_km": 45.7,
-          "isocrona_min": 51,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 45.7,
+         "isochrone_min": 51,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Urgell",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Urgell",
+            "coordinates": [
               1.1616,
               41.6594
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.1616,
               41.6594
@@ -4828,17 +4828,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 45.5,
-          "isocrona_min": 41,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 45.5,
+         "isochrone_min": 41,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 10,
-          "reduccio_isocrona_pct": 19.6,
-          "casos_beneficiats_any": 50,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 10,
+         "reduction_isocrhone_pct": 19.6,
+          "cases_beneficiaries_year": 50,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -4852,32 +4852,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Val d'Aran",
-        "provincia": "Lleida",
-        "poblacio": 409574,
-        "casos_ictus_any": 137,
-        "incidencia_per_100k": 33.4,
-        "casos_tractament_fibrinolisi": 52,
-        "casos_trombectomia": 21,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Val d'Aran",
-            "coords": [
+        "region": "Val d'Aran",
+        "province": "Lleida",
+        "population": 409574,
+        "cases_stroke_an": 137,
+        "incidence_of_100k": 33.4,
+        "cases_treatment_fibrinolysis": 52,
+        "cases_thrombectomy": 21,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Val d'Aran",
+            "coordinates": [
               0.884,
               42.7498
             ]
           },
-          "desti": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.884,
               42.7498
@@ -4899,38 +4899,38 @@
               41.61
             ]
           ],
-          "distancia_km": 128.8,
-          "isocrona_min": 143,
-          "isocrona_critica": true,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 128.8,
+         "isochrone_min": 143,
+         "critical_isochrone": true,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Val d'Aran",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Val d'Aran",
+            "coordinates": [
               0.8726,
               42.748
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital Arnau de Vilanova",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital Arnau de Vilanova",
+            "type": "Hospital primari",
+            "coordinates": [
               0.6167,
               41.6167
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Universitari Arnau de Vilanova",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Universitari Arnau de Vilanova",
+            "type": "Hospital terciari",
+            "coordinates": [
               0.6056,
               41.61
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               0.8726,
               42.748
@@ -4952,17 +4952,17 @@
               41.6167
             ]
           ],
-          "distancia_km": 127.5,
-          "isocrona_min": 116,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 127.5,
+         "isochrone_min": 116,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 27,
-          "reduccio_isocrona_pct": 18.9,
-          "casos_beneficiats_any": 91,
-          "zona_critica": true
+        "comparison": {
+          "savings_min": 27,
+         "reduction_isocrhone_pct": 18.9,
+          "cases_beneficiaries_year": 91,
+          "critical_zone": true
         }
       },
       "geometry": {
@@ -4976,32 +4976,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Valles Occidental",
-        "provincia": "Barcelona",
-        "poblacio": 437893,
-        "casos_ictus_any": 88,
-        "incidencia_per_100k": 20.1,
-        "casos_tractament_fibrinolisi": 23,
-        "casos_trombectomia": 12,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Valles Occidental",
-            "coords": [
+        "region": "Valles Occidental",
+        "province": "Barcelona",
+        "population": 437893,
+        "cases_stroke_an": 88,
+        "incidence_of_100k": 20.1,
+        "cases_treatment_fibrinolysis": 23,
+        "cases_thrombectomy": 12,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Valles Occidental",
+            "coordinates": [
               2.039,
               41.5949
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.039,
               41.5949
@@ -5023,38 +5023,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 19.7,
-          "isocrona_min": 22,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 19.7,
+         "isochrone_min": 22,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Valles Occidental",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Valles Occidental",
+            "coordinates": [
               1.9912,
               41.5836
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               1.9912,
               41.5836
@@ -5076,17 +5076,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 2.7,
-          "isocrona_min": 2,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 2.7,
+         "isochrone_min": 2,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 20,
-          "reduccio_isocrona_pct": 90.9,
-          "casos_beneficiats_any": 63,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 20,
+         "reduction_isocrhone_pct": 90.9,
+          "cases_beneficiaries_year": 63,
+          "critical_zone": false
         }
       },
       "geometry": {
@@ -5100,32 +5100,32 @@
     {
       "type": "Feature",
       "properties": {
-        "comarca": "Valles Oriental",
-        "provincia": "Barcelona",
-        "poblacio": 246536,
-        "casos_ictus_any": 162,
-        "incidencia_per_100k": 65.7,
-        "casos_tractament_fibrinolisi": 68,
-        "casos_trombectomia": 17,
-        "ambulancia_actual": {
-          "tipus": "Ambulancia convencional",
-          "icona": "ambulancia-convencional",
-          "origen": {
-            "nom": "Centre assistencial Valles Oriental",
-            "coords": [
+        "region": "Valles Oriental",
+        "province": "Barcelona",
+        "population": 246536,
+        "cases_stroke_an": 162,
+        "incidence_of_100k": 65.7,
+        "cases_treatment_fibrinolysis": 68,
+        "cases_thrombectomy": 17,
+        "modern_ambulance": {
+          "type": "Ambulancia convencional",
+          "icon": "ambulancia-convencional",
+          "origin": {
+            "name": "Centre assistencial Valles Oriental",
+            "coordinates": [
               2.3148,
               41.6293
             ]
           },
-          "desti": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.3148,
               41.6293
@@ -5147,38 +5147,38 @@
               41.4275
             ]
           ],
-          "distancia_km": 27.8,
-          "isocrona_min": 31,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 54
+          "distance_km": 27.8,
+         "isochrone_min": 31,
+         "critical_isochrone": false,
+          "average_speed_kmh": 54
         },
-        "ambulancia_msu": {
-          "tipus": "Mobile Stroke Unit (MSU)",
-          "icona": "ambulancia-msu",
-          "origen": {
-            "nom": "Base MSU Valles Oriental",
-            "coords": [
+        "ambulance_msu": {
+          "type": "Mobile Stroke Unit (MSU)",
+          "icon": "ambulancia-msu",
+          "origin": {
+            "name": "Base MSU Valles Oriental",
+            "coordinates": [
               2.2759,
               41.6413
             ]
           },
-          "desti_primari": {
-            "nom": "Hospital de Terrassa",
-            "tipus": "Hospital primari",
-            "coords": [
+          "first_destiny": {
+            "name": "Hospital de Terrassa",
+            "type": "Hospital primari",
+            "coordinates": [
               2.0089,
               41.5629
             ]
           },
-          "desti_terciari": {
-            "nom": "Hospital Vall d'Hebron",
-            "tipus": "Hospital terciari",
-            "coords": [
+          "third_destiny": {
+            "name": "Hospital Vall d'Hebron",
+            "type": "Hospital terciari",
+            "coordinates": [
               2.1169,
               41.4275
             ]
           },
-          "ruta_coords": [
+          "rout_coords": [
             [
               2.2759,
               41.6413
@@ -5200,17 +5200,17 @@
               41.5629
             ]
           ],
-          "distancia_km": 23.9,
-          "isocrona_min": 22,
-          "isocrona_critica": false,
-          "velocitat_mitjana_kmh": 66,
+          "distance_km": 23.9,
+         "isochrone_min": 22,
+         "critical_isochrone": false,
+          "average_speed_kmh": 66,
           "tractament_en_ruta": true
         },
-        "comparativa": {
-          "ahorro_min": 9,
-          "reduccio_isocrona_pct": 29.0,
-          "casos_beneficiats_any": 124,
-          "zona_critica": false
+        "comparison": {
+          "savings_min": 9,
+         "reduction_isocrhone_pct": 29.0,
+          "cases_beneficiaries_year": 124,
+          "critical_zone": false
         }
       },
       "geometry": {
