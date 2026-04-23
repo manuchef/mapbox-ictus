@@ -80,6 +80,21 @@ export default function HeatmapRecorridos({ map, activeView }) {
       setupLayers()
     }
 
+    if (!map.current.getLayer(layerId)) {
+      map.current.addLayer({
+        id: layerId,
+        type: 'line',
+        source: sourceId,
+        layout: {
+          'visibility': activeView === 'recorridos' ? 'visible' : 'none'
+        },
+        paint: {
+          'line-color': '#ff0000',
+          'line-width': 2
+        }
+      })
+    }
+
     if (map.isStyleLoaded()) {
       runSetup()
     } else {
@@ -103,6 +118,9 @@ export default function HeatmapRecorridos({ map, activeView }) {
         id: pointLayerId,
         type: 'circle',
         source: pointsourceId,
+        layout: {
+          'visibility': activeView === 'recorridos' ? 'visible' : 'none'
+        },
         paint: {
           'circle-radius': 6,
           'circle-color': '#00ff00'
@@ -120,6 +138,7 @@ export default function HeatmapRecorridos({ map, activeView }) {
         .setLngLat(amb.desti.coords)
         .addTo(map.current)
       markersRef.current.push(markerDesti)
+      markerDesti.getElement().style.display = activeView === 'recorridos' ? '' : 'none'
     }
     const t = window.setTimeout(() => {
       if (map?.isStyleLoaded()) {
@@ -146,18 +165,25 @@ export default function HeatmapRecorridos({ map, activeView }) {
 
   useEffect(() => {
     if (!map) return
-    const vis = activeView === 'recorridos' ? 'visible' : 'none'
+
+    const isVisible = activeView === 'recorridos'
+
     ictusData.features.forEach((_, index) => {
-      const id = `ruta-line-${index}`
-      if (map.getLayer(id)) {
-        map.setLayoutProperty(id, 'visibility', vis)
+      const layerId = `ruta-line-${index}`
+      const pointLayerId = `puntos-line-${index}`
+      if (map.getLayer(layerId)) {
+        map.setLayoutProperty(layerId, 'visibility', isVisible ? 'visible' : 'none')
       }
+      if (map.getLayer(pointLayerId)) {
+        map.setLayoutProperty(pointLayerId, 'visibility', isVisible ? 'visible' : 'none')
+      }
+
+      markersRef.current.forEach(marker => {
+        const el = marker.getElement()
+        el.style.display = isVisible ? '' : 'none'
+      })
     })
-    markersRef.current.forEach(m => {
-      const el = m.getElement()
-      if (el) el.style.display = vis === 'visible' ? '' : 'none'
-    })
-  }, [activeView, map])
+   }, [activeView, map])
 
   return null
 }
