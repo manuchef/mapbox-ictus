@@ -17,12 +17,12 @@ export default function HeatmapRecorridos({ map, activeView }) {
       const hospitalesVistos = new Set()
       const vis = activeViewRef.current === 'recorridos' ? 'visible' : 'none'
 
-  ictusData.features.forEach((feature, index) => {
-    const amb = feature.properties.ambulancia_actual
-    const sourceId = `ruta-comarca-${index}`
-    const layerId = `ruta-line-${index}`
-    const pointsourceId = `puntos-comarca-${index}`
-    const pointLayerId = `puntos-line-${index}`
+      ictusData.features.forEach((feature, index) => {
+        const amb = feature.properties.ambulancia_actual
+        const sourceId = `ruta-comarca-${index}`
+        const layerId = `ruta-line-${index}`
+        const pointsourceId = `puntos-comarca-${index}`
+        const pointLayerId = `puntos-line-${index}`
 
         if (!map.getSource(sourceId)) {
           map.addSource(sourceId, {
@@ -59,62 +59,21 @@ export default function HeatmapRecorridos({ map, activeView }) {
           return
         }
 
-        const markerOrigen = new mapboxgl.Marker({ color: 'green' })
-          .setLngLat(amb.origen.coords)
-          .addTo(map)
-        markersRef.current.push(markerOrigen)
-
-        const hospitalKey = amb.desti.nom
-        if (!hospitalesVistos.has(hospitalKey)) {
-          hospitalesVistos.add(hospitalKey)
-          const markerDesti = new mapboxgl.Marker({ color: 'blue' })
-            .setLngLat(amb.desti.coords)
-            .addTo(map)
-          markersRef.current.push(markerDesti)
+        if (!map.getSource(pointsourceId)) {
+          map.addSource(pointsourceId, {
+            type: 'geojson',
+            data: {
+            type: 'Feature',
+              geometry: { 
+                type: 'Point',
+                coordinates: amb.origen.coords
+              }
+            }
+          })
         }
-      })
-    }
     
-    const runSetup = () => {
-      if (!map) return
-      setupLayers()
-    }
-
-    if (!map.current.getLayer(layerId)) {
-      map.current.addLayer({
-        id: layerId,
-        type: 'line',
-        source: sourceId,
-        layout: {
-          'visibility': activeView === 'recorridos' ? 'visible' : 'none'
-        },
-        paint: {
-          'line-color': '#ff0000',
-          'line-width': 2
-        }
-      })
-    }
-
-    if (map.isStyleLoaded()) {
-      runSetup()
-    } else {
-      map.once('load', runSetup)
-    }
-    if (!map.current.getSource(pointsourceId)) {
-      map.current.addSource(pointsourceId, {
-        type: 'geojson',
-        data: {
-         type: 'Feature',
-          geometry: { 
-            type: 'Point',
-            coordinates: amb.origen.coords
-          }
-        }
-      })
-    }
-    
-    if (!map.current.getLayer(pointLayerId)) {
-      map.current.addLayer({
+        if (!map.getLayer(pointLayerId)) {
+      map.addLayer({
         id: pointLayerId,
         type: 'circle',
         source: pointsourceId,
@@ -126,20 +85,32 @@ export default function HeatmapRecorridos({ map, activeView }) {
           'circle-color': '#00ff00'
         }
       })
+        }
+
+        // Marcador azul solo si este hospital no se ha pintado ya
+        const hospitalKey = amb.desti.nom
+        if (!hospitalesVistos.has(hospitalKey)) {
+          hospitalesVistos.add(hospitalKey)
+          const markerDesti = new mapboxgl.Marker({ color: 'blue' })
+            .setLngLat(amb.desti.coords)
+            .addTo(map)
+          markersRef.current.push(markerDesti)
+          markerDesti.getElement().style.display = activeView === 'recorridos' ? '' : 'none'
+        }
+      })
+    }
+    
+    const runSetup = () => {
+      if (!map) return
+      setupLayers()
+    }
+
+    if (map.isStyleLoaded()) {
+      runSetup()
+    } else {
+      map.once('load', runSetup)
     }
               
-
-
-    // Marcador azul solo si este hospital no se ha pintado ya
-    const hospitalKey = amb.desti.nom
-    if (!hospitalesVistos.has(hospitalKey)) {
-      hospitalesVistos.add(hospitalKey)
-      const markerDesti = new mapboxgl.Marker({ color: 'blue' })
-        .setLngLat(amb.desti.coords)
-        .addTo(map.current)
-      markersRef.current.push(markerDesti)
-      markerDesti.getElement().style.display = activeView === 'recorridos' ? '' : 'none'
-    }
     const t = window.setTimeout(() => {
       if (map?.isStyleLoaded()) {
         runSetup()
@@ -153,10 +124,10 @@ export default function HeatmapRecorridos({ map, activeView }) {
         const layerId = `ruta-line-${index}`
         const pointsourceId = `puntos-comarca-${index}`
         const pointLayerId = `puntos-line-${index}`
-        if (map.current.getLayer(layerId)) map.current.removeLayer(layerId)
-        if (map.current.getSource(sourceId)) map.current.removeSource(sourceId)
-        if (map.current.getLayer(pointLayerId)) map.current.removeLayer(pointLayerId)
-        if (map.current.getSource(pointsourceId)) map.current.removeSource(pointsourceId)
+        if (map.getLayer(layerId)) map.removeLayer(layerId)
+        if (map.getSource(sourceId)) map.removeSource(sourceId)
+        if (map.getLayer(pointLayerId)) map.removeLayer(pointLayerId)
+        if (map.getSource(pointsourceId)) map.removeSource(pointsourceId)
       })
       markersRef.current.forEach(m => m.remove())
       markersRef.current = []
