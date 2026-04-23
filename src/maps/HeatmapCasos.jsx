@@ -4,6 +4,11 @@ import comarcasData from '../assets/data/comarcas.json'
 import ictusData from '../assets/data/data.json'
 
 export default function HeatmapCasos({ map, activeView }) {
+  const activeViewRef = useRef(activeView)
+  useEffect(() => {
+    activeViewRef.current = activeView
+  }, [activeView])
+
   const tooltip = useRef(new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
@@ -11,7 +16,7 @@ export default function HeatmapCasos({ map, activeView }) {
 
   // --- EFECTO 1: CREACIÓN DE CAPAS (Solo una vez) ---
   useEffect(() => {
-    if (!map.current) return
+    if (!map) return
 
     const lookup = {}
     ictusData.features.forEach(f => { lookup[f.properties.comarca] = f.properties })
@@ -40,18 +45,20 @@ export default function HeatmapCasos({ map, activeView }) {
     }
 
     const setupLayers = () => {
-      if (!map.current.getSource('data_ictus')) {
-        map.current.addSource('data_ictus', { type: 'geojson', data: ictusGeoJSONPoints })
+      if (!map) return
+      if (map.getLayer('ictus-heat')) return
+
+      if (!map.getSource('data_ictus')) {
+        map.addSource('data_ictus', { type: 'geojson', data: ictusGeoJSONPoints })
       }
 
-      // CAPA HEATMAP
-      map.current.addLayer({
+      const v = activeViewRef.current
+      map.addLayer({
         id: 'ictus-heat',
         type: 'heatmap',
         source: 'data_ictus',
         layout: {
-          // Importante: usamos el valor inicial de activeView
-          'visibility': activeView === 'heatmap' ? 'visible' : 'none'
+          'visibility': v === 'heatmap' ? 'visible' : 'none',
         },
         paint: {
           'heatmap-weight': ['interpolate', ['linear'], ['get', 'casos_ictus'], 0, 0, 100, 1],
@@ -65,25 +72,23 @@ export default function HeatmapCasos({ map, activeView }) {
         }
       })
 
-      map.current.addLayer({
+      map.addLayer({
         id: 'comarcas-interaction',
         type: 'fill',
         source: 'comarcas',
         paint: { 'fill-color': 'rgba(0,0,0,0)' },
         layout: {
-          // Importante: usamos el valor inicial de activeView
-          'visibility': activeView === 'heatmap' ? 'visible' : 'none'
+          'visibility': v === 'heatmap' ? 'visible' : 'none',
         },
       })
 
-      // Eventos
-      map.current.on('mousemove', 'comarcas-interaction', handleMouseMove)
-      map.current.on('mouseleave', 'comarcas-interaction', handleMouseLeave)
+      map.on('mousemove', 'comarcas-interaction', handleMouseMove)
+      map.on('mouseleave', 'comarcas-interaction', handleMouseLeave)
     }
 
     const handleMouseMove = (e) => {
       if (e.features.length > 0) {
-        map.current.getCanvas().style.cursor = 'pointer'
+        map.getCanvas().style.cursor = 'pointer'
         const { NOMCOMAR, casos_ictus, poblacio } = e.features[0].properties
         tooltip.current
           .setLngLat(e.lngLat)
@@ -94,60 +99,70 @@ export default function HeatmapCasos({ map, activeView }) {
               Casos ictus: <span style="color:#D00000; font-weight:bold">${casos_ictus || 0}</span>
               </div>
               `)
-          .addTo(map.current)
+          .addTo(map)
       }
     }
 
     const handleMouseLeave = () => {
-      map.current.getCanvas().style.cursor = ''
+      map.getCanvas().style.cursor = ''
       tooltip.current.remove()
     }
 
-    if (map.current.isStyleLoaded()) setupLayers()
-    else map.current.on('load', setupLayers)
+    const runSetup = () => {
+      if (!map) return
+      if (map.getLayer('ictus-heat')) return
+      setupLayers()
+    }
+
+    if (map.isStyleLoaded()) {
+      runSetup()
+    } else {
+      map.once('load', runSetup)
+    }
+    const t = window.setTimeout(() => {
+      if (map?.isStyleLoaded() && !map.getLayer('ictus-heat')) {
+        runSetup()
+      }
+    }, 0)
 
     return () => {
-      if (map.current) {
-        if (map.current.getLayer('ictus-heat')) map.current.removeLayer('ictus-heat')
-        if (map.current.getLayer('comarcas-interaction')) map.current.removeLayer('comarcas-interaction')
-        if (map.current.getLayer('comarcas-line')) map.current.removeLayer('comarcas-line')
-        if (map.current.getSource('comarcas')) map.current.removeSource('comarcas')
-        if (map.current.getSource('data_ictus')) map.current.removeSource('data_ictus')
-        map.current.off('mousemove', 'comarcas-interaction', handleMouseMove)
-        map.current.off('mouseleave', 'comarcas-interaction', handleMouseLeave)
+      clearTimeout(t)
+      if (map) {
+        if (map.getLayer('ictus-heat')) map.removeLayer('ictus-heat')
+        if (map.getLayer('comarcas-interaction')) map.removeLayer('comarcas-interaction')
+        if (map.getLayer('comarcas-line')) map.removeLayer('comarcas-line')
+        if (map.getSource('comarcas')) map.removeSource('comarcas')
+        if (map.getSource('data_ictus')) map.removeSource('data_ictus')
+        map.off('mousemove', 'comarcas-interaction', handleMouseMove)
+        map.off('mouseleave', 'comarcas-interaction', handleMouseLeave)
       }
     }
-  }, [map]) // Solo se ejecuta al montar
+  }, [map])
 
 
   // --- EFECTO 2: ACTUALIZAR VISIBILIDAD (Cuando activeView cambie) ---
   useEffect(() => {
-    if (!map.current) return;
+    if (!map) return
 
-    // Función para actualizar la propiedad de visibilidad en Mapbox
     const updateVisibility = () => {
-      if (map.current.getLayer('ictus-heat')) {
-        map.current.setLayoutProperty(
-          'ictus-heat',
-          'visibility',
-          activeView === 'heatmap' ? 'visible' : 'none'
-        );
-        map.current.setLayoutProperty(
-          'comarcas-interaction',
-          'visibility',
-          activeView === 'heatmap' ? 'visible' : 'none'
-        );
-      }
-    };
-
-    // Si el estilo ya cargó, actualizamos. Si no, esperamos a que cargue.
-    if (map.current.isStyleLoaded()) {
-      updateVisibility();
-    } else {
-      map.current.once('idle', updateVisibility);
+      if (!map.getLayer('ictus-heat')) return
+      const vis = activeView === 'heatmap' ? 'visible' : 'none'
+      map.setLayoutProperty('ictus-heat', 'visibility', vis)
+      map.setLayoutProperty('comarcas-interaction', 'visibility', vis)
     }
 
-  }, [activeView, map]); // Este efecto escucha los cambios de activeView
+    updateVisibility()
+    const t0 = window.setTimeout(updateVisibility, 0)
+    const t1 = window.setTimeout(updateVisibility, 100)
+    const raf = requestAnimationFrame(() => {
+      if (map) updateVisibility()
+    })
+    return () => {
+      clearTimeout(t0)
+      clearTimeout(t1)
+      cancelAnimationFrame(raf)
+    }
+  }, [activeView, map]) // Este efecto escucha los cambios de activeView
 
   return null
 }

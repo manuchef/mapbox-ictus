@@ -4,6 +4,11 @@ import comarcasData from '../assets/data/comarcas.json'
 import ictusData from '../assets/data/data.json'
 
 export default function HeatmapBurbuja({ map, activeView }) {
+  const activeViewRef = useRef(activeView)
+  useEffect(() => {
+    activeViewRef.current = activeView
+  }, [activeView])
+
   const tooltip = useRef(new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
@@ -11,7 +16,7 @@ export default function HeatmapBurbuja({ map, activeView }) {
 
   // --- EFECTO 1: CREACIÓN DE CAPAS (Solo una vez) ---
   useEffect(() => {
-    if (!map.current) return
+    if (!map) return
 
     const lookup = {}
     ictusData.features.forEach(f => { lookup[f.properties.comarca] = f.properties })
@@ -40,24 +45,27 @@ export default function HeatmapBurbuja({ map, activeView }) {
     }
 
     const setupLayers = () => {
-      if (!map.current.getSource('comarcas')) {
-        map.current.addSource('comarcas', {
+      if (!map) return
+      if (map.getLayer('ictus-burbujas')) return
+
+      if (!map.getSource('comarcas')) {
+        map.addSource('comarcas', {
           type: 'geojson',
           data: comarcasData    
         })
       }
 
-      if (!map.current.getSource('data_ictus')) {
-        map.current.addSource('data_ictus', { type: 'geojson', data: ictusGeoJSONPoints })
+      if (!map.getSource('data_ictus')) {
+        map.addSource('data_ictus', { type: 'geojson', data: ictusGeoJSONPoints })
       }
 
-      // CAPA BURBUJAS
-      map.current.addLayer({
+      const v = activeViewRef.current
+      map.addLayer({
         id: 'ictus-burbujas',
         type: 'circle',
         source: 'data_ictus',
         layout: {
-          'visibility': activeView === 'burbujas' ? 'visible' : 'none'
+          'visibility': v === 'burbujas' ? 'visible' : 'none',
         },
         paint: {
           'circle-radius': [
@@ -82,23 +90,23 @@ export default function HeatmapBurbuja({ map, activeView }) {
         }
       })
 
-      map.current.addLayer({
+      map.addLayer({
         id: 'comarcas-interaction-burbujas',
         type: 'fill',
         source: 'comarcas',
         paint: { 'fill-color': 'rgba(0,0,0,0)' },
         layout: {
-          'visibility': activeView === 'burbujas' ? 'visible' : 'none'
+          'visibility': v === 'burbujas' ? 'visible' : 'none',
         },
       })
 
-      map.current.on('mousemove', 'comarcas-interaction-burbujas', handleMouseMove)
-      map.current.on('mouseleave', 'comarcas-interaction-burbujas', handleMouseLeave)
+      map.on('mousemove', 'comarcas-interaction-burbujas', handleMouseMove)
+      map.on('mouseleave', 'comarcas-interaction-burbujas', handleMouseLeave)
     }
 
     const handleMouseMove = (e) => {
         if (e.features.length > 0) {
-            map.current.getCanvas().style.cursor = 'pointer'
+            map.getCanvas().style.cursor = 'pointer'
             const { NOMCOMAR, casos_ictus, poblacio } = e.features[0].properties
             tooltip.current
             .setLngLat(e.lngLat)
@@ -109,57 +117,67 @@ export default function HeatmapBurbuja({ map, activeView }) {
                 Casos ictus: <span style="color:#D00000; font-weight:bold">${casos_ictus || 0}</span>
                 </div>
             `)
-            .addTo(map.current)
+            .addTo(map)
         }
     }
 
     const handleMouseLeave = () => {
-      map.current.getCanvas().style.cursor = ''
+      map.getCanvas().style.cursor = ''
       tooltip.current.remove()
     }
 
-    if (map.current.isStyleLoaded()) setupLayers()
-    else map.current.on('load', setupLayers)
+    const runSetup = () => {
+      if (!map) return
+      if (map.getLayer('ictus-burbujas')) return
+      setupLayers()
+    }
+
+    if (map.isStyleLoaded()) {
+      runSetup()
+    } else {
+      map.once('load', runSetup)
+    }
+    const t = window.setTimeout(() => {
+      if (map?.isStyleLoaded() && !map.getLayer('ictus-burbujas')) {
+        runSetup()
+      }
+    }, 0)
 
     return () => {
-      if (map.current) {
-        if (map.current.getLayer('ictus-burbujas')) map.current.removeLayer('ictus-burbujas')
-        if (map.current.getLayer('comarcas-interaction-burbujas')) map.current.removeLayer('comarcas-interaction-burbujas')
-        if (map.current.getSource('data_ictus')) map.current.removeSource('data_ictus')
-        if (map.current.getSource('comarcas')) map.current.removeSource('comarcas')
-        map.current.off('mousemove', 'comarcas-interaction-burbujas', handleMouseMove)
-        map.current.off('mouseleave', 'comarcas-interaction-burbujas', handleMouseLeave)
+      clearTimeout(t)
+      if (map) {
+        if (map.getLayer('ictus-burbujas')) map.removeLayer('ictus-burbujas')
+        if (map.getLayer('comarcas-interaction-burbujas')) map.removeLayer('comarcas-interaction-burbujas')
+        if (map.getSource('data_ictus')) map.removeSource('data_ictus')
+        if (map.getSource('comarcas')) map.removeSource('comarcas')
+        map.off('mousemove', 'comarcas-interaction-burbujas', handleMouseMove)
+        map.off('mouseleave', 'comarcas-interaction-burbujas', handleMouseLeave)
       }
     }
   }, [map])
 
   // --- EFECTO 2: ACTUALIZAR VISIBILIDAD (Cuando activeView cambie) ---
   useEffect(() => {
-    if (!map.current) return
+    if (!map) return
 
-    // Función para actualizar la propiedad de visibilidad en Mapbox
     const updateVisibility = () => {
-      if (map.current.getLayer('ictus-burbujas')) {
-        map.current.setLayoutProperty(
-          'ictus-burbujas',
-          'visibility',
-          activeView === 'burbujas' ? 'visible' : 'none'
-        )
-        map.current.setLayoutProperty(
-          'comarcas-interaction-burbujas',
-          'visibility',
-          activeView === 'burbujas' ? 'visible' : 'none'
-        )
-      }
+      if (!map.getLayer('ictus-burbujas')) return
+      const vis = activeView === 'burbujas' ? 'visible' : 'none'
+      map.setLayoutProperty('ictus-burbujas', 'visibility', vis)
+      map.setLayoutProperty('comarcas-interaction-burbujas', 'visibility', vis)
     }
 
-    // Si el estilo ya cargó, actualizamos. Si no, esperamos a que cargue.
-    if (map.current.isStyleLoaded()) {
-      updateVisibility();
-    } else {
-      map.current.once('idle', updateVisibility);
+    updateVisibility()
+    const t0 = window.setTimeout(updateVisibility, 0)
+    const t1 = window.setTimeout(updateVisibility, 100)
+    const raf = requestAnimationFrame(() => {
+      if (map) updateVisibility()
+    })
+    return () => {
+      clearTimeout(t0)
+      clearTimeout(t1)
+      cancelAnimationFrame(raf)
     }
-
   }, [activeView, map])
 
   return null
