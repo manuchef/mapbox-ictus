@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl'
 import ictusData from '../assets/data/data.json'
-import comarcasData from '../assets/data/comarcas.json' // ← ya lo tenías importado
+import comarcasData from '../assets/data/comarcas.json' 
 
 export default function HeatmapRecorridos({ map, activeView }) {
   const activeViewRef = useRef(activeView)
@@ -19,7 +19,7 @@ export default function HeatmapRecorridos({ map, activeView }) {
       const vis = activeViewRef.current === 'recorridos' ? 'visible' : 'none'
 
       ictusData.features.forEach((feature, index) => {
-        const amb = feature.properties.ambulancia_actual
+        const amb = feature.properties.modern_ambulance
         const sourceId = `ruta-comarca-${index}`
         const layerId = `ruta-line-${index}`
         const pointsourceId = `puntos-comarca-${index}`
@@ -33,9 +33,9 @@ export default function HeatmapRecorridos({ map, activeView }) {
               geometry: {
                 type: 'LineString',
                 coordinates: [
-                  amb.origen.coords,
-                  ...amb.ruta_coords,
-                  amb.desti.coords
+                  amb.origin.coordinates,
+                  ...amb.rout_coords,
+                  amb.destiny.coordinates
                 ]
               }
             }
@@ -65,7 +65,7 @@ export default function HeatmapRecorridos({ map, activeView }) {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: amb.origen.coords
+                coordinates: amb.origin.coordinates
               }
             }
           })
@@ -86,11 +86,11 @@ export default function HeatmapRecorridos({ map, activeView }) {
           })
         }
 
-        const hospitalKey = amb.desti.nom
+        const hospitalKey = amb.destiny.name
         if (!hospitalesVistos.has(hospitalKey)) {
           hospitalesVistos.add(hospitalKey)
           const markerDesti = new mapboxgl.Marker({ color: 'blue' })
-            .setLngLat(amb.desti.coords)
+            .setLngLat(amb.destiny.coordinates)
             .addTo(map)
           markersRef.current.push(markerDesti)
           markerDesti.getElement().style.display = activeView === 'recorridos' ? '' : 'none'
