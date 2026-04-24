@@ -19,13 +19,13 @@ export default function HeatmapBurbuja({ map, activeView }) {
     if (!map) return
 
     const lookup = {}
-    ictusData.features.forEach(f => { lookup[f.properties.comarca] = f.properties })
+    ictusData.features.forEach(f => { lookup[f.properties.region] = f.properties })
 
     comarcasData.features.forEach(f => {
       const datos = lookup[f.properties.NOMCOMAR] || lookup[f.properties.NOM_COMARCA]
       if (datos) {
-        f.properties.casos_ictus = datos.casos_ictus_any
-        f.properties.poblacio = datos.poblacio
+        f.properties.cases_stroke_an = datos.cases_stroke_an
+        f.properties.population = datos.population
       }
     })
 
@@ -34,8 +34,8 @@ export default function HeatmapBurbuja({ map, activeView }) {
       features: ictusData.features.map(f => ({
         type: 'Feature',
         properties: {
-          casos_ictus: f.properties.casos_ictus_any,
-          comarca: f.properties.comarca,
+          cases_stroke_an: f.properties.cases_stroke_an,
+          comarca: f.properties.region,
         },
         geometry: {
           type: 'Point',
@@ -69,7 +69,7 @@ export default function HeatmapBurbuja({ map, activeView }) {
         },
         paint: {
           'circle-radius': [
-            'interpolate', ['linear'], ['get', 'casos_ictus'],
+            'interpolate', ['linear'], ['get', 'cases_stroke_an'],
             0, 6,
             50, 12,
             100, 20,
@@ -77,7 +77,7 @@ export default function HeatmapBurbuja({ map, activeView }) {
             400, 50
           ],
           'circle-color': [
-            'interpolate', ['linear'], ['get', 'casos_ictus'],
+            'interpolate', ['linear'], ['get', 'cases_stroke_an'],
             0, '#90E0EF',
             50, '#0077B6',
             100, '#FFD60A',
@@ -107,14 +107,14 @@ export default function HeatmapBurbuja({ map, activeView }) {
     const handleMouseMove = (e) => {
         if (e.features.length > 0) {
             map.getCanvas().style.cursor = 'pointer'
-            const { NOMCOMAR, casos_ictus, poblacio } = e.features[0].properties
+            const { NOMCOMAR, cases_stroke_an, population } = e.features[0].properties
             tooltip.current
             .setLngLat(e.lngLat)
             .setHTML(`
                 <div style="padding:5px">
                 <strong>${NOMCOMAR || 'Comarca'}</strong><br/>
-                Població: ${poblacio || 'N/A'}<br/>
-                Casos ictus: <span style="color:#D00000; font-weight:bold">${casos_ictus || 0}</span>
+                Población: ${population || 'N/A'}<br/>
+                Casos ictus: <span style="color:#D00000; font-weight:bold">${cases_stroke_an || 0}</span>
                 </div>
             `)
             .addTo(map)
