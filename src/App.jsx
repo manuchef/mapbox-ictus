@@ -14,8 +14,10 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN
 function App() {
   const mapContainer = useRef(null)
   const [map, setMap] = useState(null)
-
   const [activeView, setActiveView] = useState(null)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [velocidad, setVelocidad] = useState(180)
+  const [resetKey, setResetKey] = useState(0)
 
   const setupComarcas = (m) => {
     if (!m.getSource('comarcas')) {
@@ -51,16 +53,39 @@ function App() {
   return (
     <div className="App">
       <div>
-        <button onClick={() => {setActiveView(null)}}>Sin filtrar</button> 
-        <button onClick={() => {setActiveView('heatmap')}}>Mapa de calor</button> 
-        <button onClick={() => {setActiveView('burbujas')}}>Mapa de burbujas</button>
-        <button onClick={() => {setActiveView('recorridos')}}>Mapa de recorridos</button>
+        <button onClick={() => setActiveView(null)}>Sin filtrar</button>
+        <button onClick={() => setActiveView('heatmap')}>Mapa de calor</button>
+        <button onClick={() => setActiveView('burbujas')}>Mapa de burbujas</button>
+        <button onClick={() => setActiveView('recorridos')}>Mapa de recorridos</button>
       </div>
+
+      {activeView === 'recorridos' && (
+        <div>
+          <button onClick={() => setIsPlaying(p => !p)}>
+            {isPlaying ? 'Pausa' : 'Play'}
+          </button>
+          <button onClick={() => {
+            setResetKey(k => k + 1)
+            setIsPlaying(true)
+            }}>
+            Repetir
+          </button>
+          <input
+            type="range"
+            min={50}
+            max={500}
+            value={velocidad}
+            onChange={(e) => setVelocidad(Number(e.target.value))}
+          />
+          <span>Velocidad: {velocidad}</span>
+        </div>
+      )}
+
       <div ref={mapContainer} className="map-container" />
-      <HeatmapCasos map={map} activeView={activeView}/>
-      <HeatmapBurbuja map={map} activeView={activeView}/>
-      <HeatmapRecorridos map={map} activeView={activeView}/>
-      </div>
+      <HeatmapCasos map={map} activeView={activeView} />
+      <HeatmapBurbuja map={map} activeView={activeView} />
+      <HeatmapRecorridos map={map} activeView={activeView} isPlaying={isPlaying} velocidad={velocidad} resetKey={resetKey} />
+    </div>
   )
 }
 
