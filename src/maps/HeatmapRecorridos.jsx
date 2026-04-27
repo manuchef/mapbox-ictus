@@ -25,8 +25,6 @@ const routeSpeedMps = ictusData.features.map((f, index) => {
   return len > 1e-6 ? len / sec : 0
 })
 
-
-
 export default function HeatmapRecorridos({ map, activeView, isPlaying, velocidad, resetKey }) {
   const activeViewRef = useRef(activeView)
   useLayoutEffect(() => { activeViewRef.current = activeView }, [activeView])
@@ -37,14 +35,10 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
   const velocidadRef = useRef(velocidad)
   useLayoutEffect(() => { velocidadRef.current = velocidad }, [velocidad])
 
-  useEffect(() => {
-    if (!map || activeView !== 'recorridos') return
-    distanciaRecorridaRef.current = routeLines.map(() => 0)
-  }, [resetKey])
-
-  const hospitalMarkersRef = useRef([])
+  const hospitalMarkersRef = useRef([]) // array de { marker, destinyName }
   const distanciaRecorridaRef = useRef(routeLines.map(() => 0))
   const rafRef = useRef(null)
+  const activeRoutesRef = useRef(new Set())
 
   const prevVistaRef = useRef(null)
   useEffect(() => {
@@ -53,6 +47,11 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
     }
     prevVistaRef.current = activeView
   }, [activeView])
+
+  useEffect(() => {
+    if (!map || activeView !== 'recorridos') return
+    distanciaRecorridaRef.current = routeLines.map(() => 0)
+  }, [resetKey])
 
   // --- EFECTO 1: CREACIÓN DE CAPAS ---
   useEffect(() => {
@@ -84,7 +83,7 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
             id: layerId,
             type: 'line',
             source: sourceId,
-            layout: { visibility: visRec ? 'visible' : 'none' },
+            layout: { visibility: 'none' },
             paint: { 'line-color': '#ff0000', 'line-width': 2 }
           })
         }
@@ -95,17 +94,22 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
           const markerDesti = new mapboxgl.Marker({ color: 'blue' })
             .setLngLat(amb.destiny.coordinates)
             .addTo(map)
-          hospitalMarkersRef.current.push(markerDesti)
-          markerDesti.getElement().style.display = visRec ? '' : 'none'
+
+          // Ocultos por defecto, igual que las rutas
+          markerDesti.getElement().style.display = 'none'
+
+          // Guardamos el marcador junto a su nombre de hospital
+          hospitalMarkersRef.current.push({
+            marker: markerDesti,
+            destinyName: hospitalKey
+          })
         }
       })
 
       if (!map.hasImage('ambulance-icon')) {
-        const img = new Image(20, 20) 
+        const img = new Image(20, 20)
         img.onload = () => {
-      if (!map.hasImage('ambulance-icon')) {
-        map.addImage('ambulance-icon', img)
-          }
+          if (!map.hasImage('ambulance-icon')) map.addImage('ambulance-icon', img)
         }
         img.src = ambulanceSvg
       }
@@ -113,29 +117,20 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
       if (!map.getSource('puntos-ambulancias')) {
         map.addSource('puntos-ambulancias', {
           type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: ictusData.features.map(f => ({
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: f.properties.modern_ambulance.origin.coordinates
-              }
-            }))
-          }
+          data: { type: 'FeatureCollection', features: [] }
         })
       }
-      
+
       if (!map.getLayer('puntos-ambulancias-layer')) {
         map.addLayer({
-        id: 'puntos-ambulancias-layer',
-        type: 'symbol',
-        source: 'puntos-ambulancias',
-        layout: {
-          'icon-image': 'ambulance-icon',
-          'icon-size': 1,
-          'icon-allow-overlap': true,
-          visibility: visRec ? 'visible' : 'none'
+          id: 'puntos-ambulancias-layer',
+          type: 'symbol',
+          source: 'puntos-ambulancias',
+          layout: {
+            'icon-image': 'ambulance-icon',
+            'icon-size': 1,
+            'icon-allow-overlap': true,
+            visibility: visRec ? 'visible' : 'none'
           }
         })
       }
@@ -169,27 +164,36 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
       })
       if (map.getLayer('puntos-ambulancias-layer')) map.removeLayer('puntos-ambulancias-layer')
       if (map.getSource('puntos-ambulancias')) map.removeSource('puntos-ambulancias')
-      hospitalMarkersRef.current.forEach((m) => m.remove())
+      hospitalMarkersRef.current.forEach(({ marker }) => marker.remove())
       hospitalMarkersRef.current = []
       if (map.getLayer('comarcas-fill-invisible')) map.removeLayer('comarcas-fill-invisible')
       if (map.getSource('comarcas-poligons')) map.removeSource('comarcas-poligons')
     }
   }, [map])
 
-  // --- EFECTO 2: VISIBILIDAD ---
+  // --- EFECTO 2: VISIBILIDAD AL CAMBIAR DE VISTA ---
   useEffect(() => {
     if (!map) return
     const mostrar = activeView === 'recorridos'
 
-    ictusData.features.forEach((_, index) => {
-      if (map.getLayer(`ruta-line-${index}`)) map.setLayoutProperty(`ruta-line-${index}`, 'visibility', mostrar ? 'visible' : 'none')
-    })
+    if (!mostrar) {
+      activeRoutesRef.current.forEach((index) => {
+        if (map.getLayer(`ruta-line-${index}`)) {
+          map.setLayoutProperty(`ruta-line-${index}`, 'visibility', 'none')
+        }
+      })
+      activeRoutesRef.current.clear()
+      distanciaRecorridaRef.current = routeLines.map(() => 0)
+      map.getSource('puntos-ambulancias')?.setData({ type: 'FeatureCollection', features: [] })
+      // Ocultar todos los marcadores azules al salir de la vista
+      hospitalMarkersRef.current.forEach(({ marker }) => {
+        marker.getElement().style.display = 'none'
+      })
+    }
+
     if (map.getLayer('puntos-ambulancias-layer')) {
       map.setLayoutProperty('puntos-ambulancias-layer', 'visibility', mostrar ? 'visible' : 'none')
     }
-    hospitalMarkersRef.current.forEach((m) => {
-      m.getElement().style.display = mostrar ? '' : 'none'
-    })
   }, [activeView, map])
 
   // --- EFECTO 3: ANIMACIÓN ---
@@ -208,7 +212,8 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
       const dt = Math.min((now - last) / 1000, 0.25)
       last = now
 
-      const features = routeLines.map((line, index) => {
+      const features = [...activeRoutesRef.current].map((index) => {
+        const line = routeLines[index]
         const len = routeLengthsM[index]
         if (len < 1e-6) return null
 
@@ -233,15 +238,21 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
     }
   }, [map, activeView])
 
-  // --- EFECTO 4: CLICK → fitBounds ---
+  // --- EFECTO 4: CLICK → fitBounds + mostrar solo ruta y marcador de esa comarca ---
   useEffect(() => {
     if (!map) return
+
+    const normalize = (str) =>
+      str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
     const handleMapClick = (e) => {
       const features = map.queryRenderedFeatures(e.point, { layers: ['comarcas-fill-invisible'] })
       if (!features.length) return
 
+      const comarcaName = features[0].properties.NOMCOMAR
       const geometry = features[0].geometry
+
+      // fitBounds
       let coords = []
       if (geometry.type === 'Polygon') coords = geometry.coordinates[0]
       else if (geometry.type === 'MultiPolygon') coords = geometry.coordinates.flat(2)
@@ -250,6 +261,41 @@ export default function HeatmapRecorridos({ map, activeView, isPlaying, velocida
       const bounds = new mapboxgl.LngLatBounds(coords[0], coords[0])
       coords.forEach((c) => bounds.extend(c))
       map.fitBounds(bounds, { padding: 60, maxZoom: 13, duration: 1500, essential: true })
+
+      // Ocultar todas las rutas anteriores
+      activeRoutesRef.current.forEach((index) => {
+        if (map.getLayer(`ruta-line-${index}`)) {
+          map.setLayoutProperty(`ruta-line-${index}`, 'visibility', 'none')
+        }
+        distanciaRecorridaRef.current[index] = 0
+      })
+      activeRoutesRef.current.clear()
+
+      // Ocultar todos los marcadores azules
+      hospitalMarkersRef.current.forEach(({ marker }) => {
+        marker.getElement().style.display = 'none'
+      })
+
+      // Recoger los hospitales de destino de esta comarca
+      const destinosDeEstaComarca = new Set()
+      ictusData.features.forEach((feature, index) => {
+        if (normalize(feature.properties.region) !== normalize(comarcaName)) return
+        if (!map.getLayer(`ruta-line-${index}`)) return
+
+        map.setLayoutProperty(`ruta-line-${index}`, 'visibility', 'visible')
+        distanciaRecorridaRef.current[index] = 0
+        activeRoutesRef.current.add(index)
+
+        // Guardar el hospital destino de esta ruta
+        destinosDeEstaComarca.add(feature.properties.modern_ambulance.destiny.name)
+      })
+
+      // Mostrar solo los marcadores azules de los hospitales destino de esta comarca
+      hospitalMarkersRef.current.forEach(({ marker, destinyName }) => {
+        if (destinosDeEstaComarca.has(destinyName)) {
+          marker.getElement().style.display = ''
+        }
+      })
     }
 
     map.on('click', handleMapClick)
