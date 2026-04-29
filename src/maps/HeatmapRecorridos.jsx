@@ -6,494 +6,338 @@ import comarcasData from '../assets/data/comarcas.json'
 import ambulanceSvg from '../assets/icons/ambulance.svg?url'
 import ambulanceMsuSvg from '../assets/icons/ambulance_MSU.svg?url'
 
-// ---------------------------------------------------------------------------
-// MAPBOX DIRECTIONS — obtiene la ruta real por carretera entre waypoints
-// ---------------------------------------------------------------------------
-/**
- * Llama a la API Directions de Mapbox con el perfil driving y devuelve
- * las coordenadas de la geometría decodificada como array [[lng,lat],…].
- *
- * @param {[number,number][]} waypoints  – array de coordenadas [lng, lat]
- * @param {string}            token      – mapboxgl.accessToken
- * @returns {Promise<[number,number][]>} – coordenadas de la ruta real o
- *                                         los waypoints originales si falla
- */
-async function fetchDirectionsRoute(waypoints, token) {
-  // La API admite máximo 25 waypoints; si hay más, submuestreamos
-  const MAX_WP = 25
-  let coords = waypoints
-  if (coords.length > MAX_WP) {
-    const step = Math.ceil(coords.length / (MAX_WP - 2))
-    coords = [
-      coords[0],
-      ...coords.slice(1, -1).filter((_, i) => i % step === 0),
-      coords[coords.length - 1]
-    ].slice(0, MAX_WP)
-  }
+// ─── Config de las 3 rutas ───────────────────────────────────────────────────
+const N = ictusData.features.length
+const ROUTES = [
+  { key: 'amb',  source: i => `ruta-comarca-${i}`, layer: i => `ruta-line-${i}`,     color: '#ff0000', dash: false },
+  { key: 'msu',  source: i => `ruta-msu-${i}`,     layer: i => `ruta-msu-line-${i}`,  color: '#ff8c00', dash: false },
+  { key: 'msu2', source: i => `ruta-msu2-${i}`,    layer: i => `ruta-msu2-line-${i}`, color: '#9b59b6', dash: true  },
+]
 
-  const coordinatesStr = coords.map(([lng, lat]) => `${lng},${lat}`).join(';')
-  const url =
-    `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinatesStr}` +
-    `?geometries=geojson&overview=full&access_token=${token}`
+// ─── Caché de rutas y métricas (nivel módulo — persisten entre renders) ───────
+const cache   = {}
+const lines   = { amb: Array(N).fill(null), msu: Array(N).fill(null), msu2: Array(N).fill(null) }
+const lengths = { amb: Array(N).fill(0),    msu: Array(N).fill(0),    msu2: Array(N).fill(0)    }
+const speeds  = { amb: Array(N).fill(0),    msu: Array(N).fill(0),    msu2: Array(N).fill(0)    }
 
+// ─── Helpers puros ───────────────────────────────────────────────────────────
+const normalize   = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+const kmhToMps    = kmh => (kmh * 1000) / 3600
+const mkZeros     = () => Array(N).fill(0)
+const geojsonLine = coords => ({ type: 'Feature', geometry: { type: 'LineString', coordinates: coords } })
+const emptyFC     = () => ({ type: 'FeatureCollection', features: [] })
+
+function setVis(map, layerId, visible) {
+  map.getLayer(layerId) && map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none')
+}
+
+// ─── Directions API ──────────────────────────────────────────────────────────
+async function fetchRoute(waypoints, token) {
+  const str = waypoints.map(([lng, lat]) => `${lng},${lat}`).join(';')
+  const url  = `https://api.mapbox.com/directions/v5/mapbox/driving/${str}?geometries=geojson&overview=full&access_token=${token}`
   try {
-    const res = await fetch(url)
-    if (!res.ok) throw new Error(`Directions API error: ${res.status}`)
+    const res  = await fetch(url)
     const data = await res.json()
-    if (!data.routes?.length) throw new Error('No routes returned')
-    return data.routes[0].geometry.coordinates // [[lng,lat],…]
-  } catch (err) {
-    console.warn('[HeatmapRecorridos] Directions fallback a línea recta:', err.message)
-    return waypoints // fallback: ruta original
+    if (!res.ok || !data.routes?.length) throw new Error()
+    return data.routes[0].geometry.coordinates
+  } catch {
+    console.warn('[HeatmapRecorridos] Directions fallback a línea recta')
+    return waypoints
   }
 }
 
-// ---------------------------------------------------------------------------
-// ESTADO GLOBAL DE RUTAS (calculadas una sola vez y cacheadas)
-// ---------------------------------------------------------------------------
-// Cada entrada: null → aún no calculada, 'loading' → en vuelo, [coords] → lista
-const routeCoordsCache = {} // key: `amb-${i}` | `msu-${i}`
-
-// Objetos turf.lineString y métricas (se rellenan cuando la ruta llega)
-const routeLines   = new Array(ictusData.features.length).fill(null)
-const msuLines     = new Array(ictusData.features.length).fill(null)
-const routeLengthsM  = new Array(ictusData.features.length).fill(0)
-const msuLengthsM    = new Array(ictusData.features.length).fill(0)
-const routeSpeedMps  = new Array(ictusData.features.length).fill(0)
-const msuSpeedMps    = new Array(ictusData.features.length).fill(0)
-
-function buildLineMetrics(index, coords, type) {
-  if (type === 'amb') {
-    routeLines[index]    = turf.lineString(coords)
-    routeLengthsM[index] = Math.max(0, turf.length(routeLines[index], { units: 'meters' }))
-    const sec = Math.max(Number(ictusData.features[index].properties.modern_ambulance.isochrone_min), 0) * 60 || 600
-    routeSpeedMps[index] = routeLengthsM[index] > 1e-6 ? routeLengthsM[index] / sec : 0
-  } else {
-    msuLines[index]    = turf.lineString(coords)
-    msuLengthsM[index] = Math.max(0, turf.length(msuLines[index], { units: 'meters' }))
-    const sec = Math.max(Number(ictusData.features[index].properties.ambulance_msu.isochrone_min), 0) * 60 || 600
-    msuSpeedMps[index] = msuLengthsM[index] > 1e-6 ? msuLengthsM[index] / sec : 0
-  }
+// ─── Guardar ruta y calcular métricas ───────────────────────────────────────
+function storeRoute(index, coords, type) {
+  const p    = ictusData.features[index].properties
+  const line = turf.lineString(coords)
+  lines[type][index]   = line
+  lengths[type][index] = Math.max(0, turf.length(line, { units: 'meters' }))
+  speeds[type][index]  = kmhToMps(
+    type === 'amb'  ? (Number(p.modern_ambulance.average_speed_kmh) || 54) :
+    type === 'msu'  ? (Number(p.ambulance_msu.average_speed_kmh)    || 66) :
+    90 // msu2 — autopista
+  )
 }
 
-// ---------------------------------------------------------------------------
-// HELPERS
-// ---------------------------------------------------------------------------
-const normalize = (str) =>
-  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+// Prefetch sin bloquear (para setup inicial)
+function prefetchRoute(index, type, waypoints, token, map) {
+  const k = `${type}-${index}`
+  if (cache[k]) return
+  cache[k] = 'loading'
+  fetchRoute(waypoints, token).then(coords => {
+    cache[k] = coords
+    storeRoute(index, coords, type)
+    const src = ROUTES.find(r => r.key === type).source(index)
+    map.getSource(src)?.setData(geojsonLine(coords))
+  })
+}
 
-const resetDistancias = () => ictusData.features.map(() => 0)
+// Fetch bloqueante (para cuando el usuario ya hizo click en la comarca)
+async function ensureRoute(index, type, waypoints, token, map) {
+  const k = `${type}-${index}`
+  if (cache[k] && cache[k] !== 'loading') return
+  cache[k] = 'loading'
+  const coords = await fetchRoute(waypoints, token)
+  cache[k] = coords
+  storeRoute(index, coords, type)
+  const src = ROUTES.find(r => r.key === type).source(index)
+  map.getSource(src)?.setData(geojsonLine(coords))
+}
 
-// ---------------------------------------------------------------------------
-// COMPONENTE
-// ---------------------------------------------------------------------------
+// ─── Componente ──────────────────────────────────────────────────────────────
 export default function HeatmapRecorridos({ map, activeView, isPlaying, velocidad, resetKey }) {
   const activeViewRef = useRef(activeView)
   const isPlayingRef  = useRef(isPlaying)
   const velocidadRef  = useRef(velocidad)
-
   useLayoutEffect(() => { activeViewRef.current = activeView }, [activeView])
   useLayoutEffect(() => { isPlayingRef.current  = isPlaying  }, [isPlaying])
   useLayoutEffect(() => { velocidadRef.current  = velocidad  }, [velocidad])
 
-  const hospitalMarkersRef = useRef([])
-  const msuMarkersRef      = useRef([])
+  // markers agrupados por tipo: amb (azul), msu (verde), msu2 (morado)
+  const markersRef = useRef({ amb: [], msu: [], msu2: [] })
+  const dist       = useRef({ amb: mkZeros(), msu: mkZeros(), msu2: mkZeros() })
+  const rafRef     = useRef(null)
+  const activeAmb  = useRef(new Set())
+  const activeMsu  = useRef(new Set())
+  const prevView   = useRef(null)
 
-  const distanciaRecorridaRef = useRef(resetDistancias())
-  const msuDistanciaRef       = useRef(resetDistancias())
+  const resetDist = () => { dist.current = { amb: mkZeros(), msu: mkZeros(), msu2: mkZeros() } }
 
-  const rafRef          = useRef(null)
-  const activeRoutesRef = useRef(new Set())
-  const activeMsuRef    = useRef(new Set())
-  const prevVistaRef    = useRef(null)
-
-  // ── reset al entrar en 'recorridos' ──────────────────────────────────────
   useEffect(() => {
-    if (activeView === 'recorridos' && prevVistaRef.current !== 'recorridos') {
-      distanciaRecorridaRef.current = resetDistancias()
-      msuDistanciaRef.current       = resetDistancias()
-    }
-    prevVistaRef.current = activeView
+    if (activeView === 'recorridos' && prevView.current !== 'recorridos') resetDist()
+    prevView.current = activeView
   }, [activeView])
 
-  useEffect(() => {
-    if (!map || activeView !== 'recorridos') return
-    distanciaRecorridaRef.current = resetDistancias()
-    msuDistanciaRef.current       = resetDistancias()
-  }, [resetKey])
+  useEffect(() => { if (map && activeView === 'recorridos') resetDist() }, [resetKey])
 
-  // ── EFECTO 1: CREACIÓN DE CAPAS ──────────────────────────────────────────
+  // ── Efecto 1: Setup ──────────────────────────────────────────────────────
   useEffect(() => {
     if (!map) return
 
-    const setupLayers = () => {
-      const hospitalesVistos   = new Set()
-      const msuDestinosVistos  = new Set()
+    const setup = () => {
+      const seen   = { amb: new Set(), msu: new Set(), msu2: new Set() }
       const visRec = activeViewRef.current === 'recorridos'
       const token  = mapboxgl.accessToken
 
-      ictusData.features.forEach((feature, index) => {
+      ictusData.features.forEach((feature, i) => {
         const amb = feature.properties.modern_ambulance
         const msu = feature.properties.ambulance_msu
 
-        // ── Fuente vacía para ruta amb (se rellenará con la ruta real) ──
-        if (!map.getSource(`ruta-comarca-${index}`)) {
-          map.addSource(`ruta-comarca-${index}`, {
-            type: 'geojson',
-            data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] } }
-          })
-        }
-        if (!map.getLayer(`ruta-line-${index}`)) {
-          map.addLayer({
-            id: `ruta-line-${index}`,
-            type: 'line',
-            source: `ruta-comarca-${index}`,
-            layout: { visibility: 'none' },
-            paint: { 'line-color': '#ff0000', 'line-width': 2 }
-          })
-        }
+        // Fuentes + capas de ruta
+        ROUTES.forEach(({ key, source, layer, color, dash }) => {
+          if (!map.getSource(source(i)))
+            map.addSource(source(i), { type: 'geojson', data: geojsonLine([]) })
+          if (!map.getLayer(layer(i))) {
+            const paint = { 'line-color': color, 'line-width': 2 }
+            if (dash) paint['line-dasharray'] = [4, 2]
+            map.addLayer({ id: layer(i), type: 'line', source: source(i), layout: { visibility: 'none' }, paint })
+          }
+        })
 
-        // Marker destino ambulancia (azul)
-        if (!hospitalesVistos.has(amb.destiny.name)) {
-          hospitalesVistos.add(amb.destiny.name)
-          const marker = new mapboxgl.Marker({ color: 'blue' })
-            .setLngLat(amb.destiny.coordinates)
-            .addTo(map)
+        // Markers (deduplicados por coordenadas)
+        const addMarker = (type, color, coords, name) => {
+          const k = coords.join(',')
+          if (seen[type].has(k)) return
+          seen[type].add(k)
+          const marker = new mapboxgl.Marker({ color }).setLngLat(coords).addTo(map)
           marker.getElement().style.display = 'none'
-          hospitalMarkersRef.current.push({ marker, destinyName: amb.destiny.name })
+          markersRef.current[type].push({ marker, name })
         }
+        addMarker('amb',  'blue',     amb.destiny.coordinates,       amb.destiny.name)
+        addMarker('msu',  'green',    msu.first_destiny.coordinates, msu.first_destiny.name)
+        if (msu.third_destiny)
+          addMarker('msu2', '#9b59b6', msu.third_destiny.coordinates, msu.third_destiny.name)
 
-        // ── Fuente vacía para ruta MSU ──────────────────────────────────
-        if (!map.getSource(`ruta-msu-${index}`)) {
-          map.addSource(`ruta-msu-${index}`, {
-            type: 'geojson',
-            data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] } }
-          })
-        }
-        if (!map.getLayer(`ruta-msu-line-${index}`)) {
-          map.addLayer({
-            id: `ruta-msu-line-${index}`,
-            type: 'line',
-            source: `ruta-msu-${index}`,
-            layout: { visibility: 'none' },
-            paint: { 'line-color': '#ff8c00', 'line-width': 2 }
-          })
-        }
-
-        // Marker destino MSU (verde)
-        if (!msuDestinosVistos.has(msu.first_destiny.name)) {
-          msuDestinosVistos.add(msu.first_destiny.name)
-          const marker = new mapboxgl.Marker({ color: 'green' })
-            .setLngLat(msu.first_destiny.coordinates)
-            .addTo(map)
-          marker.getElement().style.display = 'none'
-          msuMarkersRef.current.push({ marker, destinyName: msu.first_destiny.name })
-        }
-
-        // ── Pre-fetch de rutas en segundo plano ─────────────────────────
-        const ambKey = `amb-${index}`
-        if (!routeCoordsCache[ambKey]) {
-          routeCoordsCache[ambKey] = 'loading'
-          const waypoints = [amb.origin.coordinates, ...amb.rout_coords, amb.destiny.coordinates]
-          fetchDirectionsRoute(waypoints, token).then((coords) => {
-            routeCoordsCache[ambKey] = coords
-            buildLineMetrics(index, coords, 'amb')
-            // Actualizar la fuente si ya está en el mapa
-            if (map.getSource(`ruta-comarca-${index}`)) {
-              map.getSource(`ruta-comarca-${index}`).setData({
-                type: 'Feature',
-                geometry: { type: 'LineString', coordinates: coords }
-              })
-            }
-          })
-        }
-
-        const msuKey = `msu-${index}`
-        if (!routeCoordsCache[msuKey]) {
-          routeCoordsCache[msuKey] = 'loading'
-          const waypoints = [msu.origin.coordinates, ...msu.rout_coords, msu.first_destiny.coordinates]
-          fetchDirectionsRoute(waypoints, token).then((coords) => {
-            routeCoordsCache[msuKey] = coords
-            buildLineMetrics(index, coords, 'msu')
-            if (map.getSource(`ruta-msu-${index}`)) {
-              map.getSource(`ruta-msu-${index}`).setData({
-                type: 'Feature',
-                geometry: { type: 'LineString', coordinates: coords }
-              })
-            }
-          })
-        }
+        // Prefetch rutas en segundo plano
+        prefetchRoute(i, 'amb',  [amb.origin.coordinates, amb.destiny.coordinates],              token, map)
+        prefetchRoute(i, 'msu',  [msu.origin.coordinates, msu.first_destiny.coordinates],        token, map)
+        if (msu.third_destiny)
+          prefetchRoute(i, 'msu2', [msu.first_destiny.coordinates, msu.third_destiny.coordinates], token, map)
       })
 
-      // Iconos ambulancias
-      if (!map.hasImage('ambulance-icon')) {
+      // Iconos
+      ;[['ambulance-icon', ambulanceSvg], ['ambulance-msu-icon', ambulanceMsuSvg]].forEach(([name, src]) => {
+        if (map.hasImage(name)) return
         const img = new Image(20, 20)
-        img.onload = () => { if (!map.hasImage('ambulance-icon')) map.addImage('ambulance-icon', img) }
-        img.src = ambulanceSvg
-      }
-      if (!map.hasImage('ambulance-msu-icon')) {
-        const img = new Image(20, 20)
-        img.onload = () => { if (!map.hasImage('ambulance-msu-icon')) map.addImage('ambulance-msu-icon', img) }
-        img.src = ambulanceMsuSvg
-      }
+        img.onload = () => { if (!map.hasImage(name)) map.addImage(name, img) }
+        img.src = src
+      })
 
-      // Source + layer puntos ambulancias
-      if (!map.getSource('puntos-ambulancias'))
-        map.addSource('puntos-ambulancias', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
-      if (!map.getLayer('puntos-ambulancias-layer'))
-        map.addLayer({
-          id: 'puntos-ambulancias-layer',
-          type: 'symbol',
-          source: 'puntos-ambulancias',
-          layout: { 'icon-image': 'ambulance-icon', 'icon-size': 1, 'icon-allow-overlap': true, visibility: visRec ? 'visible' : 'none' }
+      // Layers de puntos animados
+      ;[
+        ['puntos-ambulancias', 'puntos-ambulancias-layer', 'ambulance-icon'],
+        ['puntos-msu',          'puntos-msu-layer',         'ambulance-msu-icon'],
+        ['puntos-msu2',         'puntos-msu2-layer',        'ambulance-msu-icon'],
+      ].forEach(([src, lay, icon]) => {
+        if (!map.getSource(src)) map.addSource(src, { type: 'geojson', data: emptyFC() })
+        if (!map.getLayer(lay))  map.addLayer({
+          id: lay, type: 'symbol', source: src,
+          layout: { 'icon-image': icon, 'icon-size': 1, 'icon-allow-overlap': true, visibility: visRec ? 'visible' : 'none' }
         })
+      })
 
-      // Source + layer puntos MSU
-      if (!map.getSource('puntos-msu'))
-        map.addSource('puntos-msu', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
-      if (!map.getLayer('puntos-msu-layer'))
-        map.addLayer({
-          id: 'puntos-msu-layer',
-          type: 'symbol',
-          source: 'puntos-msu',
-          layout: { 'icon-image': 'ambulance-msu-icon', 'icon-size': 1, 'icon-allow-overlap': true, visibility: visRec ? 'visible' : 'none' }
-        })
-
-      // Capa invisible comarcas (clicks)
-      if (!map.getSource('comarcas-poligons'))
-        map.addSource('comarcas-poligons', { type: 'geojson', data: comarcasData })
+      // Capa invisible comarcas
+      if (!map.getSource('comarcas-poligons')) map.addSource('comarcas-poligons', { type: 'geojson', data: comarcasData })
       if (!map.getLayer('comarcas-fill-invisible'))
-        map.addLayer({
-          id: 'comarcas-fill-invisible',
-          type: 'fill',
-          source: 'comarcas-poligons',
-          paint: { 'fill-opacity': 0 }
-        })
+        map.addLayer({ id: 'comarcas-fill-invisible', type: 'fill', source: 'comarcas-poligons', paint: { 'fill-opacity': 0 } })
     }
 
-    if (map.isStyleLoaded()) setupLayers()
-    else map.once('load', setupLayers)
-    const t = window.setTimeout(() => { if (map?.isStyleLoaded()) setupLayers() }, 0)
+    if (map.isStyleLoaded()) setup()
+    else map.once('load', setup)
+    const t = setTimeout(() => { if (map?.isStyleLoaded()) setup() }, 0)
 
     return () => {
       clearTimeout(t)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-
-      ictusData.features.forEach((_, i) => {
-        if (map.getLayer(`ruta-line-${i}`))     map.removeLayer(`ruta-line-${i}`)
-        if (map.getSource(`ruta-comarca-${i}`)) map.removeSource(`ruta-comarca-${i}`)
-        if (map.getLayer(`ruta-msu-line-${i}`)) map.removeLayer(`ruta-msu-line-${i}`)
-        if (map.getSource(`ruta-msu-${i}`))     map.removeSource(`ruta-msu-${i}`)
-      })
-      ;['puntos-ambulancias-layer', 'puntos-msu-layer', 'comarcas-fill-invisible']
+      cancelAnimationFrame(rafRef.current)
+      ictusData.features.forEach((_, i) =>
+        ROUTES.forEach(({ source, layer }) => {
+          map.getLayer(layer(i))   && map.removeLayer(layer(i))
+          map.getSource(source(i)) && map.removeSource(source(i))
+        })
+      )
+      ;['puntos-ambulancias-layer', 'puntos-msu-layer', 'puntos-msu2-layer', 'comarcas-fill-invisible']
         .forEach(l => map.getLayer(l)  && map.removeLayer(l))
-      ;['puntos-ambulancias', 'puntos-msu', 'comarcas-poligons']
+      ;['puntos-ambulancias', 'puntos-msu', 'puntos-msu2', 'comarcas-poligons']
         .forEach(s => map.getSource(s) && map.removeSource(s))
-
-      hospitalMarkersRef.current.forEach(({ marker }) => marker.remove())
-      msuMarkersRef.current.forEach(({ marker }) => marker.remove())
-      hospitalMarkersRef.current = []
-      msuMarkersRef.current = []
+      Object.values(markersRef.current).flat().forEach(({ marker }) => marker.remove())
+      markersRef.current = { amb: [], msu: [], msu2: [] }
     }
   }, [map])
 
-  // ── EFECTO 2: VISIBILIDAD AL CAMBIAR DE VISTA ────────────────────────────
+  // ── Efecto 2: Visibilidad al cambiar de vista ────────────────────────────
   useEffect(() => {
     if (!map) return
-    const mostrar = activeView === 'recorridos'
-
-    if (!mostrar) {
-      activeRoutesRef.current.forEach((i) => {
-        if (map.getLayer(`ruta-line-${i}`))
-          map.setLayoutProperty(`ruta-line-${i}`, 'visibility', 'none')
-      })
-      activeMsuRef.current.forEach((i) => {
-        if (map.getLayer(`ruta-msu-line-${i}`))
-          map.setLayoutProperty(`ruta-msu-line-${i}`, 'visibility', 'none')
-      })
-      activeRoutesRef.current.clear()
-      activeMsuRef.current.clear()
-      distanciaRecorridaRef.current = resetDistancias()
-      msuDistanciaRef.current       = resetDistancias()
-      map.getSource('puntos-ambulancias')?.setData({ type: 'FeatureCollection', features: [] })
-      map.getSource('puntos-msu')?.setData({ type: 'FeatureCollection', features: [] })
-      hospitalMarkersRef.current.forEach(({ marker }) => { marker.getElement().style.display = 'none' })
-      msuMarkersRef.current.forEach(({ marker }) => { marker.getElement().style.display = 'none' })
+    const on = activeView === 'recorridos'
+    if (!on) {
+      ;[...activeAmb.current, ...activeMsu.current].forEach(i =>
+        ROUTES.forEach(({ layer }) => setVis(map, layer(i), false))
+      )
+      activeAmb.current.clear()
+      activeMsu.current.clear()
+      resetDist()
+      ;['puntos-ambulancias', 'puntos-msu', 'puntos-msu2'].forEach(s => map.getSource(s)?.setData(emptyFC()))
+      Object.values(markersRef.current).flat().forEach(({ marker }) => { marker.getElement().style.display = 'none' })
     }
-
-    if (map.getLayer('puntos-ambulancias-layer'))
-      map.setLayoutProperty('puntos-ambulancias-layer', 'visibility', mostrar ? 'visible' : 'none')
-    if (map.getLayer('puntos-msu-layer'))
-      map.setLayoutProperty('puntos-msu-layer', 'visibility', mostrar ? 'visible' : 'none')
+    ;['puntos-ambulancias-layer', 'puntos-msu-layer', 'puntos-msu2-layer'].forEach(l => setVis(map, l, on))
   }, [activeView, map])
 
-  // ── EFECTO 3: ANIMACIÓN ──────────────────────────────────────────────────
+  // ── Efecto 3: Animación RAF ──────────────────────────────────────────────
   useEffect(() => {
     if (!map || activeView !== 'recorridos') return
+    let last = performance.now(), vivo = true
 
-    let last = performance.now()
-    let vivo = true
+    const advance = (type, i, dt) => {
+      const line = lines[type][i], len = lengths[type][i]
+      if (!line || len < 1e-6) return null
+      const d = Math.min(dist.current[type][i] + speeds[type][i] * dt * velocidadRef.current, len)
+      dist.current[type][i] = d
+      return turf.along(line, d, { units: 'meters' })
+    }
 
-    const tick = (now) => {
+    const tick = now => {
       if (!vivo) return
       rafRef.current = requestAnimationFrame(tick)
       if (activeViewRef.current !== 'recorridos' || !isPlayingRef.current) { last = now; return }
-
       const dt = Math.min((now - last) / 1000, 0.25)
       last = now
 
-      // Posiciones ambulancias convencionales
-      const featuresAmb = [...activeRoutesRef.current].map((i) => {
-        if (!routeLines[i]) return null
-        const len = routeLengthsM[i]
-        if (len < 1e-6) return null
-        const d = Math.min(distanciaRecorridaRef.current[i] + routeSpeedMps[i] * dt * velocidadRef.current, len)
-        distanciaRecorridaRef.current[i] = d
-        return turf.along(routeLines[i], d, { units: 'meters' })
+      const ptAmb  = [...activeAmb.current].map(i => advance('amb', i, dt)).filter(Boolean)
+      const ptMsu  = [...activeMsu.current].map(i => advance('msu', i, dt)).filter(Boolean)
+      const ptMsu2 = [...activeMsu.current].map(i => {
+        // Solo arranca cuando tramo 1 ha llegado al final
+        if (!lines.msu2[i] || dist.current.msu[i] < lengths.msu[i]) return null
+        // Primera vez: hacer visible la línea punteada y el marker terciari
+        if (map.getLayoutProperty(`ruta-msu2-line-${i}`, 'visibility') === 'none') {
+          setVis(map, `ruta-msu2-line-${i}`, true)
+          const name = ictusData.features[i].properties.ambulance_msu.third_destiny?.name
+          markersRef.current.msu2.forEach(m => { if (m.name === name) m.marker.getElement().style.display = '' })
+        }
+        return advance('msu2', i, dt)
       }).filter(Boolean)
 
-      // Posiciones ambulancias MSU
-      const featuresMsu = [...activeMsuRef.current].map((i) => {
-        if (!msuLines[i]) return null
-        const len = msuLengthsM[i]
-        if (len < 1e-6) return null
-        const d = Math.min(msuDistanciaRef.current[i] + msuSpeedMps[i] * dt * velocidadRef.current, len)
-        msuDistanciaRef.current[i] = d
-        return turf.along(msuLines[i], d, { units: 'meters' })
-      }).filter(Boolean)
-
-      map.getSource('puntos-ambulancias')?.setData({ type: 'FeatureCollection', features: featuresAmb })
-      map.getSource('puntos-msu')?.setData({ type: 'FeatureCollection', features: featuresMsu })
+      map.getSource('puntos-ambulancias')?.setData({ type: 'FeatureCollection', features: ptAmb  })
+      map.getSource('puntos-msu')?.setData(        { type: 'FeatureCollection', features: ptMsu  })
+      map.getSource('puntos-msu2')?.setData(       { type: 'FeatureCollection', features: ptMsu2 })
     }
 
     rafRef.current = requestAnimationFrame(tick)
     return () => { vivo = false; cancelAnimationFrame(rafRef.current) }
   }, [map, activeView])
 
-  // ── EFECTO 4: CLICK EN COMARCA ───────────────────────────────────────────
+  // ── Efecto 4: Click en comarca ───────────────────────────────────────────
   useEffect(() => {
     if (!map) return
 
-    const handleMapClick = async (e) => {
+    const onClick = async e => {
       if (activeViewRef.current !== 'recorridos') return
-
       const [clicked] = map.queryRenderedFeatures(e.point, { layers: ['comarcas-fill-invisible'] })
       if (!clicked) return
 
-      const { NOMCOMAR } = clicked.properties
       const token = mapboxgl.accessToken
 
-      // Limpiar rutas y marcadores anteriores
-      activeRoutesRef.current.forEach((i) => {
-        if (map.getLayer(`ruta-line-${i}`)) map.setLayoutProperty(`ruta-line-${i}`, 'visibility', 'none')
-        distanciaRecorridaRef.current[i] = 0
+      // Limpiar estado anterior
+      ;[...activeAmb.current, ...activeMsu.current].forEach(i => {
+        ROUTES.forEach(({ layer }) => setVis(map, layer(i), false))
+        dist.current.amb[i] = dist.current.msu[i] = dist.current.msu2[i] = 0
       })
-      activeMsuRef.current.forEach((i) => {
-        if (map.getLayer(`ruta-msu-line-${i}`)) map.setLayoutProperty(`ruta-msu-line-${i}`, 'visibility', 'none')
-        msuDistanciaRef.current[i] = 0
-      })
-      activeRoutesRef.current.clear()
-      activeMsuRef.current.clear()
-      hospitalMarkersRef.current.forEach(({ marker }) => { marker.getElement().style.display = 'none' })
-      msuMarkersRef.current.forEach(({ marker }) => { marker.getElement().style.display = 'none' })
+      activeAmb.current.clear()
+      activeMsu.current.clear()
+      Object.values(markersRef.current).flat().forEach(({ marker }) => { marker.getElement().style.display = 'none' })
 
-      const destinosAmb    = new Set()
-      const destinosMsu    = new Set()
-      const todasCoordsBounds = []
-
-      // Identificar índices de la comarca clickada
-      const indicesComarca = ictusData.features
-        .map((feature, i) => normalize(feature.properties.region) === normalize(NOMCOMAR) ? i : -1)
+      const indices = ictusData.features
+        .map((f, i) => normalize(f.properties.region) === normalize(clicked.properties.NOMCOMAR) ? i : -1)
         .filter(i => i !== -1)
 
-      // Para cada comarca, aseguramos que la ruta por carretera esté calculada
-      await Promise.all(
-        indicesComarca.flatMap((i) => {
-          const feature = ictusData.features[i]
-          const amb     = feature.properties.modern_ambulance
-          const msu     = feature.properties.ambulance_msu
-          const promises = []
+      // Esperar rutas (las que no estén ya cacheadas)
+      await Promise.all(indices.flatMap(i => {
+        const amb = ictusData.features[i].properties.modern_ambulance
+        const msu = ictusData.features[i].properties.ambulance_msu
+        return [
+          ensureRoute(i, 'amb',  [amb.origin.coordinates, amb.destiny.coordinates],              token, map),
+          ensureRoute(i, 'msu',  [msu.origin.coordinates, msu.first_destiny.coordinates],        token, map),
+          msu.third_destiny
+            ? ensureRoute(i, 'msu2', [msu.first_destiny.coordinates, msu.third_destiny.coordinates], token, map)
+            : null,
+        ].filter(Boolean)
+      }))
 
-          // Ambulancia convencional
-          const ambKey = `amb-${i}`
-          if (!routeCoordsCache[ambKey] || routeCoordsCache[ambKey] === 'loading') {
-            // Si aún no está en caché, la pedimos ahora y esperamos
-            const waypointsAmb = [amb.origin.coordinates, ...amb.rout_coords, amb.destiny.coordinates]
-            const p = fetchDirectionsRoute(waypointsAmb, token).then((coords) => {
-              routeCoordsCache[ambKey] = coords
-              buildLineMetrics(i, coords, 'amb')
-              if (map.getSource(`ruta-comarca-${i}`)) {
-                map.getSource(`ruta-comarca-${i}`).setData({
-                  type: 'Feature',
-                  geometry: { type: 'LineString', coordinates: coords }
-                })
-              }
-            })
-            promises.push(p)
-          }
+      const bounds   = []
+      const destAmb  = new Set()
+      const destMsu  = new Set()
 
-          // Ambulancia MSU
-          const msuKey = `msu-${i}`
-          if (!routeCoordsCache[msuKey] || routeCoordsCache[msuKey] === 'loading') {
-            const waypointsMsu = [msu.origin.coordinates, ...msu.rout_coords, msu.first_destiny.coordinates]
-            const p = fetchDirectionsRoute(waypointsMsu, token).then((coords) => {
-              routeCoordsCache[msuKey] = coords
-              buildLineMetrics(i, coords, 'msu')
-              if (map.getSource(`ruta-msu-${i}`)) {
-                map.getSource(`ruta-msu-${i}`).setData({
-                  type: 'Feature',
-                  geometry: { type: 'LineString', coordinates: coords }
-                })
-              }
-            })
-            promises.push(p)
-          }
+      indices.forEach(i => {
+        const amb = ictusData.features[i].properties.modern_ambulance
+        const msu = ictusData.features[i].properties.ambulance_msu
 
-          return promises
-        })
-      )
+        setVis(map, `ruta-line-${i}`, true)
+        dist.current.amb[i] = 0
+        activeAmb.current.add(i)
+        destAmb.add(amb.destiny.name)
+        if (lines.amb[i])  bounds.push(...lines.amb[i].geometry.coordinates)
 
-      // Activar capas con las rutas ya listas
-      indicesComarca.forEach((i) => {
-        const feature = ictusData.features[i]
+        setVis(map, `ruta-msu-line-${i}`, true)
+        dist.current.msu[i] = 0
+        activeMsu.current.add(i)
+        destMsu.add(msu.first_destiny.name)
+        if (lines.msu[i])  bounds.push(...lines.msu[i].geometry.coordinates)
 
-        if (map.getLayer(`ruta-line-${i}`)) {
-          map.setLayoutProperty(`ruta-line-${i}`, 'visibility', 'visible')
-          distanciaRecorridaRef.current[i] = 0
-          activeRoutesRef.current.add(i)
-          destinosAmb.add(feature.properties.modern_ambulance.destiny.name)
-          if (routeLines[i]) todasCoordsBounds.push(...routeLines[i].geometry.coordinates)
-        }
-
-        if (map.getLayer(`ruta-msu-line-${i}`)) {
-          map.setLayoutProperty(`ruta-msu-line-${i}`, 'visibility', 'visible')
-          msuDistanciaRef.current[i] = 0
-          activeMsuRef.current.add(i)
-          destinosMsu.add(feature.properties.ambulance_msu.first_destiny.name)
-          if (msuLines[i]) todasCoordsBounds.push(...msuLines[i].geometry.coordinates)
-        }
+        // Tramo 2 oculto hasta que termina tramo 1; sus coords sí van al bounds
+        dist.current.msu2[i] = 0
+        if (lines.msu2[i]) bounds.push(...lines.msu2[i].geometry.coordinates)
       })
 
-      // Zoom a las rutas activas
-      if (todasCoordsBounds.length) {
-        const bounds = todasCoordsBounds.reduce(
-          (b, c) => b.extend(c),
-          new mapboxgl.LngLatBounds(todasCoordsBounds[0], todasCoordsBounds[0])
-        )
-        map.fitBounds(bounds, { padding: 60, maxZoom: 13, duration: 1500, essential: true })
+      if (bounds.length) {
+        const b = bounds.reduce((b, c) => b.extend(c), new mapboxgl.LngLatBounds(bounds[0], bounds[0]))
+        map.fitBounds(b, { padding: 60, maxZoom: 13, duration: 1500, essential: true })
       }
 
-      // Mostrar markers
-      hospitalMarkersRef.current.forEach(({ marker, destinyName }) => {
-        if (destinosAmb.has(destinyName)) marker.getElement().style.display = ''
-      })
-      msuMarkersRef.current.forEach(({ marker, destinyName }) => {
-        if (destinosMsu.has(destinyName)) marker.getElement().style.display = ''
-      })
+      // Mostrar markers tramo 1 (tramo 2 se muestra desde el tick)
+      markersRef.current.amb.forEach(m  => { if (destAmb.has(m.name))  m.marker.getElement().style.display = '' })
+      markersRef.current.msu.forEach(m  => { if (destMsu.has(m.name))  m.marker.getElement().style.display = '' })
     }
 
-    map.on('click', handleMapClick)
-    return () => map.off('click', handleMapClick)
+    map.on('click', onClick)
+    return () => map.off('click', onClick)
   }, [map])
 
   return null
